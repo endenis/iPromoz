@@ -1,0 +1,410 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EF89CDD11E4A853D00D87365 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89CDD01E4A853D00D87365 /* AppDelegate.swift */; };
+		EF89CDD31E4A853D00D87365 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89CDD21E4A853D00D87365 /* ViewController.swift */; };
+		EF89CDD51E4A853D00D87365 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF89CDD41E4A853D00D87365 /* Assets.xcassets */; };
+		EF89CDD81E4A853D00D87365 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF89CDD61E4A853D00D87365 /* Main.storyboard */; };
+		EF89CDE31E4A853D00D87365 /* iPromozTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89CDE21E4A853D00D87365 /* iPromozTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EF89CDDF1E4A853D00D87365 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF89CDC51E4A853D00D87365 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF89CDCC1E4A853D00D87365;
+			remoteInfo = iPromoz;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EF89CDCD1E4A853D00D87365 /* iPromoz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPromoz.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF89CDD01E4A853D00D87365 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EF89CDD21E4A853D00D87365 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EF89CDD41E4A853D00D87365 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EF89CDD71E4A853D00D87365 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EF89CDD91E4A853D00D87365 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF89CDDE1E4A853D00D87365 /* iPromozTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iPromozTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF89CDE21E4A853D00D87365 /* iPromozTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPromozTests.swift; sourceTree = "<group>"; };
+		EF89CDE41E4A853D00D87365 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EF89CDCA1E4A853D00D87365 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF89CDDB1E4A853D00D87365 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EF89CDC41E4A853D00D87365 = {
+			isa = PBXGroup;
+			children = (
+				EF89CDCF1E4A853D00D87365 /* iPromoz */,
+				EF89CDE11E4A853D00D87365 /* iPromozTests */,
+				EF89CDCE1E4A853D00D87365 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EF89CDCE1E4A853D00D87365 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EF89CDCD1E4A853D00D87365 /* iPromoz.app */,
+				EF89CDDE1E4A853D00D87365 /* iPromozTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EF89CDCF1E4A853D00D87365 /* iPromoz */ = {
+			isa = PBXGroup;
+			children = (
+				EF89CDD01E4A853D00D87365 /* AppDelegate.swift */,
+				EF89CDD21E4A853D00D87365 /* ViewController.swift */,
+				EF89CDD41E4A853D00D87365 /* Assets.xcassets */,
+				EF89CDD61E4A853D00D87365 /* Main.storyboard */,
+				EF89CDD91E4A853D00D87365 /* Info.plist */,
+			);
+			path = iPromoz;
+			sourceTree = "<group>";
+		};
+		EF89CDE11E4A853D00D87365 /* iPromozTests */ = {
+			isa = PBXGroup;
+			children = (
+				EF89CDE21E4A853D00D87365 /* iPromozTests.swift */,
+				EF89CDE41E4A853D00D87365 /* Info.plist */,
+			);
+			path = iPromozTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EF89CDCC1E4A853D00D87365 /* iPromoz */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF89CDE71E4A853D00D87365 /* Build configuration list for PBXNativeTarget "iPromoz" */;
+			buildPhases = (
+				EF89CDC91E4A853D00D87365 /* Sources */,
+				EF89CDCA1E4A853D00D87365 /* Frameworks */,
+				EF89CDCB1E4A853D00D87365 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iPromoz;
+			productName = iPromoz;
+			productReference = EF89CDCD1E4A853D00D87365 /* iPromoz.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EF89CDDD1E4A853D00D87365 /* iPromozTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF89CDEA1E4A853D00D87365 /* Build configuration list for PBXNativeTarget "iPromozTests" */;
+			buildPhases = (
+				EF89CDDA1E4A853D00D87365 /* Sources */,
+				EF89CDDB1E4A853D00D87365 /* Frameworks */,
+				EF89CDDC1E4A853D00D87365 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EF89CDE01E4A853D00D87365 /* PBXTargetDependency */,
+			);
+			name = iPromozTests;
+			productName = iPromozTests;
+			productReference = EF89CDDE1E4A853D00D87365 /* iPromozTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EF89CDC51E4A853D00D87365 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Denis Engels";
+				TargetAttributes = {
+					EF89CDCC1E4A853D00D87365 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					EF89CDDD1E4A853D00D87365 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = EF89CDCC1E4A853D00D87365;
+					};
+				};
+			};
+			buildConfigurationList = EF89CDC81E4A853D00D87365 /* Build configuration list for PBXProject "iPromoz" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EF89CDC41E4A853D00D87365;
+			productRefGroup = EF89CDCE1E4A853D00D87365 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EF89CDCC1E4A853D00D87365 /* iPromoz */,
+				EF89CDDD1E4A853D00D87365 /* iPromozTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EF89CDCB1E4A853D00D87365 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF89CDD51E4A853D00D87365 /* Assets.xcassets in Resources */,
+				EF89CDD81E4A853D00D87365 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF89CDDC1E4A853D00D87365 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EF89CDC91E4A853D00D87365 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF89CDD31E4A853D00D87365 /* ViewController.swift in Sources */,
+				EF89CDD11E4A853D00D87365 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF89CDDA1E4A853D00D87365 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF89CDE31E4A853D00D87365 /* iPromozTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EF89CDE01E4A853D00D87365 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EF89CDCC1E4A853D00D87365 /* iPromoz */;
+			targetProxy = EF89CDDF1E4A853D00D87365 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EF89CDD61E4A853D00D87365 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EF89CDD71E4A853D00D87365 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EF89CDE51E4A853D00D87365 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EF89CDE61E4A853D00D87365 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		EF89CDE81E4A853D00D87365 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = iPromoz/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.endenis.iPromoz;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		EF89CDE91E4A853D00D87365 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = iPromoz/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.endenis.iPromoz;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		EF89CDEB1E4A853D00D87365 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = iPromozTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.endenis.iPromozTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iPromoz.app/Contents/MacOS/iPromoz";
+			};
+			name = Debug;
+		};
+		EF89CDEC1E4A853D00D87365 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = iPromozTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.endenis.iPromozTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iPromoz.app/Contents/MacOS/iPromoz";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EF89CDC81E4A853D00D87365 /* Build configuration list for PBXProject "iPromoz" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF89CDE51E4A853D00D87365 /* Debug */,
+				EF89CDE61E4A853D00D87365 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF89CDE71E4A853D00D87365 /* Build configuration list for PBXNativeTarget "iPromoz" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF89CDE81E4A853D00D87365 /* Debug */,
+				EF89CDE91E4A853D00D87365 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EF89CDEA1E4A853D00D87365 /* Build configuration list for PBXNativeTarget "iPromozTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF89CDEB1E4A853D00D87365 /* Debug */,
+				EF89CDEC1E4A853D00D87365 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EF89CDC51E4A853D00D87365 /* Project object */;
+}
