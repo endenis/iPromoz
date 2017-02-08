@@ -10,7 +10,7 @@ protocol PZTemplateViewDelegate {
     func workingWithATemplateState(_ templateUrl: URL)
 }
 
-class PZTemplateView: NSView {
+class PZTemplateView: NSImageView {
 
     var delegate: PZTemplateViewDelegate?
     var surroundingLineWidth: CGFloat = 4.2
