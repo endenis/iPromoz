@@ -12,6 +12,8 @@
 		EF89CDD51E4A853D00D87365 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF89CDD41E4A853D00D87365 /* Assets.xcassets */; };
 		EF89CDD81E4A853D00D87365 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF89CDD61E4A853D00D87365 /* Main.storyboard */; };
 		EF89CDE31E4A853D00D87365 /* iPromozTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89CDE21E4A853D00D87365 /* iPromozTests.swift */; };
+		EF89CDF01E4A8C2C00D87365 /* PZTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89CDEF1E4A8C2B00D87365 /* PZTemplateView.swift */; };
+		EF89CDF21E4A979600D87365 /* PZTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89CDF11E4A979600D87365 /* PZTemplateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,8 @@
 		EF89CDDE1E4A853D00D87365 /* iPromozTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iPromozTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF89CDE21E4A853D00D87365 /* iPromozTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPromozTests.swift; sourceTree = "<group>"; };
 		EF89CDE41E4A853D00D87365 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF89CDEF1E4A8C2B00D87365 /* PZTemplateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZTemplateView.swift; sourceTree = "<group>"; };
+		EF89CDF11E4A979600D87365 /* PZTemplateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZTemplateViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,8 @@
 				EF89CDD41E4A853D00D87365 /* Assets.xcassets */,
 				EF89CDD61E4A853D00D87365 /* Main.storyboard */,
 				EF89CDD91E4A853D00D87365 /* Info.plist */,
+				EF89CDEF1E4A8C2B00D87365 /* PZTemplateView.swift */,
+				EF89CDF11E4A979600D87365 /* PZTemplateViewController.swift */,
 			);
 			path = iPromoz;
 			sourceTree = "<group>";
@@ -195,7 +201,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF89CDF01E4A8C2C00D87365 /* PZTemplateView.swift in Sources */,
 				EF89CDD31E4A853D00D87365 /* ViewController.swift in Sources */,
+				EF89CDF21E4A979600D87365 /* PZTemplateViewController.swift in Sources */,
 				EF89CDD11E4A853D00D87365 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
