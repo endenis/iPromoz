@@ -13,16 +13,6 @@ class PZTemplateViewController: NSViewController {
     var overlayView: NSView?
     let defaultFontSize: CGFloat = 20.0
 
-    @IBAction func logStuff(sender: NSButton) {
-        if let templateView = self.view as? PZTemplateView {
-            if let templateRectangle: NSRect = templateView.imageRectangle(), let templateRatio: CGFloat = templateView.imageResizeRatio() {
-                Swift.print(templateRectangle)
-                updateExampleLabel(templateRectangle: templateRectangle, templateRatio: templateRatio)
-                overlayView?.frame = templateRectangle
-            }
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -60,6 +50,7 @@ extension PZTemplateViewController: PZTemplateViewDelegate {
     func nothingToDoState() {
         instructionLabel?.isHidden = false
         exampleLabel?.isHidden = true
+        overlayView?.isHidden = true
         if let templateView = self.view as? PZTemplateView {
             templateView.image = nil
         }
@@ -68,9 +59,14 @@ extension PZTemplateViewController: PZTemplateViewDelegate {
     func workingWithATemplateState(_ templateUrl: URL) {
         instructionLabel?.isHidden = true
         exampleLabel?.isHidden = false
+        overlayView?.isHidden = false
         Swift.print(templateUrl)
         if let templateView = self.view as? PZTemplateView {
             templateView.image = NSImage.init(contentsOf: templateUrl)
+            if let templateRectangle: NSRect = templateView.imageRectangle(), let templateRatio: CGFloat = templateView.imageResizeRatio() {
+                updateExampleLabel(templateRectangle: templateRectangle, templateRatio: templateRatio)
+                overlayView?.frame = templateRectangle
+            }
         }
     }
     

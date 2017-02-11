@@ -711,7 +711,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="P90-tm-aIr"/>
                                             </imageView>
-                                            <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5n5-oC-PCW">
+                                            <textField hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5n5-oC-PCW">
                                                 <rect key="frame" x="91" y="185" width="93" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" title="EXAMPLE" drawsBackground="YES" allowsEditingTextAttributes="YES" usesSingleLineMode="YES" id="d7r-B9-J8M">
@@ -725,19 +725,6 @@
                                     <customView fixedFrame="YES" id="qJO-jY-zMc">
                                         <rect key="frame" x="300" y="0.0" width="180" height="270"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <subviews>
-                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AVQ-IF-LWc">
-                                                <rect key="frame" x="49" y="181" width="81" height="32"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KoG-lR-ZC7">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="logStuffWithSender:" target="ULR-Eq-27Y" id="jeg-xa-TaC"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
                                     </customView>
                                 </subviews>
                                 <holdingPriorities>
