@@ -712,10 +712,10 @@
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="P90-tm-aIr"/>
                                             </imageView>
                                             <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5n5-oC-PCW">
-                                                <rect key="frame" x="91" y="187" width="96" height="22"/>
+                                                <rect key="frame" x="91" y="185" width="93" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" title="EXAMPLE" drawsBackground="YES" allowsEditingTextAttributes="YES" usesSingleLineMode="YES" id="d7r-B9-J8M">
-                                                    <font key="font" metaFont="system"/>
+                                                    <font key="font" metaFont="system" size="20"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </textFieldCell>

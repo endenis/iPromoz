@@ -10,13 +10,15 @@ class PZTemplateViewController: NSViewController {
     @IBOutlet var instructionLabel: NSTextField?
     @IBOutlet var exampleLabel    : NSTextField?
 
+    var overlayView: NSView?
+    let defaultFontSize: CGFloat = 20.0
+
     @IBAction func logStuff(sender: NSButton) {
         if let templateView = self.view as? PZTemplateView {
-            exampleLabel?.stringValue = "aaaaaaaaa"
-            if let templateRectangle: NSRect = templateView.imageRectangle() {
+            if let templateRectangle: NSRect = templateView.imageRectangle(), let templateRatio: CGFloat = templateView.imageResizeRatio() {
                 Swift.print(templateRectangle)
-                exampleLabel?.frame.origin.x = templateRectangle.origin.x
-                exampleLabel?.frame.origin.y = templateRectangle.origin.y
+                updateExampleLabel(templateRectangle: templateRectangle, templateRatio: templateRatio)
+                overlayView?.frame = templateRectangle
             }
         }
     }
@@ -26,6 +28,29 @@ class PZTemplateViewController: NSViewController {
 
         if let templateView = self.view as? PZTemplateView {
             templateView.delegate = self
+            templateView.postsFrameChangedNotifications = true
+            overlayView = NSView.init()
+            overlayView!.wantsLayer = true
+            overlayView!.layer?.backgroundColor = CGColor.init(red: 0, green: 100, blue: 0, alpha: 0.42)
+            templateView.addSubview(overlayView!)
+            let nc = NotificationCenter.default
+            nc.addObserver(forName:NSNotification.Name.NSViewFrameDidChange, object: templateView, queue: nil, using: catchNotification)
+        }
+    }
+
+    func catchNotification(_: Notification) -> Void {
+        if let templateView = self.view as? PZTemplateView, let templateRectangle: NSRect = templateView.imageRectangle(), let templateRatio: CGFloat = templateView.imageResizeRatio() {
+            updateExampleLabel(templateRectangle: templateRectangle, templateRatio: templateRatio)
+            overlayView?.frame = templateRectangle
+        }
+    }
+
+    func updateExampleLabel(templateRectangle: NSRect, templateRatio: CGFloat) -> Void {
+        if let theLabel = exampleLabel {
+            let font: NSFont = theLabel.font!
+            theLabel.font = NSFont.init(descriptor: font.fontDescriptor, size: (defaultFontSize * templateRatio))
+            theLabel.frame.origin = templateRectangle.origin
+            theLabel.sizeToFit()
         }
     }
 }
