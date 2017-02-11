@@ -105,12 +105,12 @@ class PZTemplateView: NSImageView {
     func imageRectangle() -> NSRect? {
         if let imageSize = image?.size, let ratio = imageReziseRatio() {
             var rect: NSRect = NSRect.init()
-            let preciseX = round((bounds.size.width  - imageSize.width)  / 2.0)
-            let preciseY = round((bounds.size.height - imageSize.height) / 2.0)
-            rect.origin.x = (preciseX >= 0) ? preciseX : 0
-            rect.origin.y = (preciseY >= 0) ? preciseY : 0
             rect.size.width  = round(imageSize.width * ratio)
             rect.size.height = round(imageSize.height * ratio)
+            let preciseX = round((bounds.size.width  - rect.size.width)  / 2.0)
+            let preciseY = round((bounds.size.height - rect.size.height) / 2.0)
+            rect.origin.x = (preciseX >= 0) ? preciseX : 0
+            rect.origin.y = (preciseY >= 0) ? preciseY : 0
             return rect
         }
         return nil
