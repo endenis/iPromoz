@@ -697,15 +697,6 @@
                                         <rect key="frame" x="0.0" y="0.0" width="299" height="270"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vMK-xs-ro6">
-                                                <rect key="frame" x="53" y="126" width="192" height="18"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Drag and drop an image here" id="n5U-Ja-7NN">
-                                                    <font key="font" metaFont="system" size="14"/>
-                                                    <color key="textColor" red="0.29550474476439792" green="0.29550474476439792" blue="0.29550474476439792" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
                                             <imageView autoresizesSubviews="NO" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d3m-pR-twm" customClass="PZTemplateView" customModule="iPromoz" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="299" height="270"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -718,6 +709,15 @@
                                                     <font key="font" metaFont="system" size="20"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vMK-xs-ro6">
+                                                <rect key="frame" x="53" y="126" width="192" height="18"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Drag and drop an image here" id="n5U-Ja-7NN">
+                                                    <font key="font" metaFont="system" size="14"/>
+                                                    <color key="textColor" red="0.29550474476439792" green="0.29550474476439792" blue="0.29550474476439792" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
                                         </subviews>

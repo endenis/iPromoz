@@ -20,6 +20,7 @@ class PZTemplateViewController: NSViewController {
             templateView.delegate = self
             templateView.postsFrameChangedNotifications = true
             overlayView = NSView.init()
+            overlayView!.isHidden = true
             overlayView!.wantsLayer = true
             overlayView!.layer?.backgroundColor = CGColor.init(red: 0, green: 100, blue: 0, alpha: 0.42)
             templateView.addSubview(overlayView!)
