@@ -10,6 +10,17 @@ class PZTemplateViewController: NSViewController {
     @IBOutlet var instructionLabel: NSTextField?
     @IBOutlet var exampleLabel    : NSTextField?
 
+    @IBAction func logStuff(sender: NSButton) {
+        if let templateView = self.view as? PZTemplateView {
+            exampleLabel?.stringValue = "aaaaaaaaa"
+            if let templateRectangle: NSRect = templateView.imageRectangle() {
+                Swift.print(templateRectangle)
+                exampleLabel?.frame.origin.x = templateRectangle.origin.x
+                exampleLabel?.frame.origin.y = templateRectangle.origin.y
+            }
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,7 +28,6 @@ class PZTemplateViewController: NSViewController {
             templateView.delegate = self
         }
     }
-
 }
 
 extension PZTemplateViewController: PZTemplateViewDelegate {

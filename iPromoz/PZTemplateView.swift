@@ -88,4 +88,32 @@ class PZTemplateView: NSImageView {
         return nil
     }
 
+    func imageReziseRatio() -> CGFloat? {
+        if let imageSize = image?.size {
+            if (NSWidth(bounds) > imageSize.width && NSHeight(bounds) > imageSize.height) {
+                return 1.0
+            }
+            else {
+                let xRatio = NSWidth(bounds)  / imageSize.width
+                let yRatio = NSHeight(bounds) / imageSize.height
+                return [xRatio, yRatio].min()
+            }
+        }
+        return nil
+    }
+
+    func imageRectangle() -> NSRect? {
+        if let imageSize = image?.size, let ratio = imageReziseRatio() {
+            var rect: NSRect = NSRect.init()
+            let preciseX = round((bounds.size.width  - imageSize.width)  / 2.0)
+            let preciseY = round((bounds.size.height - imageSize.height) / 2.0)
+            rect.origin.x = (preciseX >= 0) ? preciseX : 0
+            rect.origin.y = (preciseY >= 0) ? preciseY : 0
+            rect.size.width  = round(imageSize.width * ratio)
+            rect.size.height = round(imageSize.height * ratio)
+            return rect
+        }
+        return nil
+    }
+
 }
