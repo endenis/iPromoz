@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF3DEB311E55DB1C00F40D8D /* PZTemplateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3DEB301E55DB1C00F40D8D /* PZTemplateLabel.swift */; };
 		EF89CDD11E4A853D00D87365 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89CDD01E4A853D00D87365 /* AppDelegate.swift */; };
 		EF89CDD31E4A853D00D87365 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89CDD21E4A853D00D87365 /* ViewController.swift */; };
 		EF89CDD51E4A853D00D87365 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF89CDD41E4A853D00D87365 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EF3DEB301E55DB1C00F40D8D /* PZTemplateLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZTemplateLabel.swift; sourceTree = "<group>"; };
 		EF89CDCD1E4A853D00D87365 /* iPromoz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPromoz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF89CDD01E4A853D00D87365 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF89CDD21E4A853D00D87365 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				EF89CDD91E4A853D00D87365 /* Info.plist */,
 				EF89CDEF1E4A8C2B00D87365 /* PZTemplateView.swift */,
 				EF89CDF11E4A979600D87365 /* PZTemplateViewController.swift */,
+				EF3DEB301E55DB1C00F40D8D /* PZTemplateLabel.swift */,
 			);
 			path = iPromoz;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				EF89CDD31E4A853D00D87365 /* ViewController.swift in Sources */,
 				EF89CDF21E4A979600D87365 /* PZTemplateViewController.swift in Sources */,
 				EF89CDD11E4A853D00D87365 /* AppDelegate.swift in Sources */,
+				EF3DEB311E55DB1C00F40D8D /* PZTemplateLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +407,7 @@
 				EF89CDE91E4A853D00D87365 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EF89CDEA1E4A853D00D87365 /* Build configuration list for PBXNativeTarget "iPromozTests" */ = {
 			isa = XCConfigurationList;
@@ -411,6 +416,7 @@
 				EF89CDEC1E4A853D00D87365 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

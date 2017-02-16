@@ -8,7 +8,7 @@ import Cocoa
 class PZTemplateViewController: NSViewController {
 
     @IBOutlet var instructionLabel: NSTextField?
-    @IBOutlet var exampleLabel    : NSTextField?
+    @IBOutlet var exampleLabel    : PZTemplateLabel?
 
     var overlayView: NSView?
     let defaultFontSize: CGFloat = 20.0
@@ -55,6 +55,7 @@ extension PZTemplateViewController: PZTemplateViewDelegate {
         if let templateView = self.view as? PZTemplateView {
             templateView.image = nil
         }
+        exampleLabel?.removeTrackingAreas()
     }
     
     func workingWithATemplateState(_ templateUrl: URL) {
@@ -68,6 +69,10 @@ extension PZTemplateViewController: PZTemplateViewDelegate {
                 updateExampleLabel(templateRectangle: templateRectangle, templateRatio: templateRatio)
                 overlayView?.frame = templateRectangle
             }
+        }
+        if exampleLabel != nil {
+            let tackingArea = NSTrackingArea.init(rect: exampleLabel!.bounds, options: [NSTrackingAreaOptions.mouseEnteredAndExited, NSTrackingAreaOptions.activeAlways], owner: exampleLabel!, userInfo: nil)
+            exampleLabel!.addTrackingArea(tackingArea)
         }
     }
     
