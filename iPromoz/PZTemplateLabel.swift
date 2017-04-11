@@ -18,12 +18,14 @@ class PZTemplateLabel: NSTextField {
 
     override func mouseEntered(with event: NSEvent) {
         Swift.print("mouse entered")
-        isBordered = true
+        Swift.print(self.frame)
+        self.drawsBackground = true
+        self.backgroundColor = NSColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 0.9)
     }
 
     override func mouseExited(with event: NSEvent) {
         Swift.print("mouse exited")
-        isBordered = false
+        self.drawsBackground = false
     }
 
     func removeTrackingAreas() {
@@ -32,4 +34,5 @@ class PZTemplateLabel: NSTextField {
             removeTrackingArea(trackingArea)
         }
     }
+
 }
