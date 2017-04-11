@@ -12,6 +12,8 @@ class PZTemplateViewController: NSViewController {
 
     var overlayView: NSView?
     let defaultFontSize: CGFloat = 20.0
+    var ratioX: CGFloat = 0.5
+    var ratioY: CGFloat = 0.5
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +42,9 @@ class PZTemplateViewController: NSViewController {
         if let theLabel = exampleLabel {
             let font: NSFont = theLabel.font!
             theLabel.font = NSFont.init(descriptor: font.fontDescriptor, size: (defaultFontSize * templateRatio))
-            theLabel.frame.origin = templateRectangle.origin
             theLabel.sizeToFit()
+            theLabel.frame.origin.x = templateRectangle.origin.x + self.ratioX * templateRectangle.width - (theLabel.frame.width / 2.0)
+            theLabel.frame.origin.y = templateRectangle.origin.y + self.ratioY * templateRectangle.height - (theLabel.frame.height / 2.0)
         }
     }
 }
