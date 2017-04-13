@@ -24,11 +24,15 @@ class PZTemplateView: NSImageView {
         layer?.backgroundColor = backgroundColor.cgColor
 
         if isDragging {
-            NSColor.selectedControlColor.set()
-            let path = NSBezierPath(rect: bounds)
-            path.lineWidth = surroundingLineWidth
-            path.stroke()
+            drawBlueInsideBorders()
         }
+    }
+
+    func drawBlueInsideBorders() {
+        NSColor.selectedControlColor.set()
+        let path = NSBezierPath(rect: bounds)
+        path.lineWidth = surroundingLineWidth
+        path.stroke()
     }
 
     override func awakeFromNib() {

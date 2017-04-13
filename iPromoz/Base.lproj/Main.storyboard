@@ -743,6 +743,9 @@
                                                         </segment>
                                                     </segments>
                                                 </segmentedCell>
+                                                <connections>
+                                                    <action selector="alignmentControlSelected:" target="ULR-Eq-27Y" id="T7V-Fm-9gv"/>
+                                                </connections>
                                             </segmentedControl>
                                         </subviews>
                                     </customView>
@@ -774,8 +777,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NSMiniTextAlignCenter" width="128" height="128"/>
-        <image name="NSMiniTextAlignLeft" width="128" height="128"/>
-        <image name="NSMiniTextAlignRight" width="128" height="128"/>
+        <image name="NSMiniTextAlignCenter" width="11" height="15"/>
+        <image name="NSMiniTextAlignLeft" width="11" height="15"/>
+        <image name="NSMiniTextAlignRight" width="11" height="15"/>
     </resources>
 </document>

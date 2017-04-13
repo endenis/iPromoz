@@ -14,6 +14,7 @@ class PZTemplateViewController: NSViewController {
     let defaultFontSize: CGFloat = 20.0
     var ratioX: CGFloat = 0.5
     var ratioY: CGFloat = 0.5
+    var alignmentCoefficient: CGFloat = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,10 @@ class PZTemplateViewController: NSViewController {
     }
 
     func catchNotification(_: Notification) -> Void {
+        updateSizes()
+    }
+
+    func updateSizes() -> Void {
         if let templateView = self.view as? PZTemplateView, let templateRectangle: NSRect = templateView.imageRectangle(), let templateRatio: CGFloat = templateView.imageResizeRatio() {
             updateExampleLabel(templateRectangle: templateRectangle, templateRatio: templateRatio)
             overlayView?.frame = templateRectangle
@@ -43,9 +48,16 @@ class PZTemplateViewController: NSViewController {
             let font: NSFont = theLabel.font!
             theLabel.font = NSFont.init(descriptor: font.fontDescriptor, size: (defaultFontSize * templateRatio))
             theLabel.sizeToFit()
-            theLabel.frame.origin.x = templateRectangle.origin.x + self.ratioX * templateRectangle.width - (theLabel.frame.width / 2.0)
-            theLabel.frame.origin.y = templateRectangle.origin.y + self.ratioY * templateRectangle.height - (theLabel.frame.height / 2.0)
+            let x: CGFloat = templateRectangle.origin.x + self.ratioX * templateRectangle.width - (theLabel.frame.width / 2.0) * self.alignmentCoefficient
+            let y: CGFloat = templateRectangle.origin.y + self.ratioY * templateRectangle.height - (theLabel.frame.height / 2.0)
+            theLabel.frame.origin.x = round(x)
+            theLabel.frame.origin.y = round(y)
         }
+    }
+
+    @IBAction func alignmentControlSelected(_ sender: NSSegmentedControl) {
+        self.alignmentCoefficient = CGFloat(sender.selectedSegment)
+        updateSizes()
     }
 }
 
