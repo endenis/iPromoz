@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -725,6 +725,26 @@
                                     <customView fixedFrame="YES" id="qJO-jY-zMc">
                                         <rect key="frame" x="300" y="0.0" width="180" height="270"/>
                                         <autoresizingMask key="autoresizingMask"/>
+                                        <subviews>
+                                            <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1T5-eg-Mvv">
+                                                <rect key="frame" x="38" y="227" width="104" height="24"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="FuI-aT-TcG">
+                                                    <font key="font" metaFont="system"/>
+                                                    <segments>
+                                                        <segment image="NSMiniTextAlignLeft" width="32">
+                                                            <nil key="label"/>
+                                                        </segment>
+                                                        <segment image="NSMiniTextAlignCenter" width="32" selected="YES" tag="1">
+                                                            <nil key="label"/>
+                                                        </segment>
+                                                        <segment image="NSMiniTextAlignRight" width="32">
+                                                            <nil key="label"/>
+                                                        </segment>
+                                                    </segments>
+                                                </segmentedCell>
+                                            </segmentedControl>
+                                        </subviews>
                                     </customView>
                                 </subviews>
                                 <holdingPriorities>
@@ -753,4 +773,9 @@
             <point key="canvasLocation" x="74" y="739"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSMiniTextAlignCenter" width="128" height="128"/>
+        <image name="NSMiniTextAlignLeft" width="128" height="128"/>
+        <image name="NSMiniTextAlignRight" width="128" height="128"/>
+    </resources>
 </document>
