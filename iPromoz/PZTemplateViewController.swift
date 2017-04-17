@@ -93,8 +93,10 @@ extension PZTemplateViewController: PZTemplateViewDelegate {
 
     func updateLabelPositionRatio(_ point: CGPoint) {
         if let templateView = self.view as? PZTemplateView, let templateRectangle: NSRect = templateView.imageRectangle(), let theLabel = exampleLabel {
-            self.ratioX = (point.x - templateRectangle.origin.x + (theLabel.frame.width / 2.0) * self.alignmentCoefficient) / templateRectangle.width
-            self.ratioY = (point.y - templateRectangle.origin.y + (theLabel.frame.height / 2.0)) / templateRectangle.height
+            let widthDetla  = (theLabel.frame.width  / 2.0) * self.alignmentCoefficient
+            let heightDelta = (theLabel.frame.height / 2.0)
+            self.ratioX = (point.x - templateRectangle.origin.x + widthDetla)  / templateRectangle.width
+            self.ratioY = (point.y - templateRectangle.origin.y + heightDelta) / templateRectangle.height
         }
     }
     
