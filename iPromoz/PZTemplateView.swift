@@ -5,11 +5,6 @@
 
 import Cocoa
 
-protocol PZTemplateViewDelegate {
-    func nothingToDoState()
-    func workingWithATemplateState(_ templateUrl: URL)
-}
-
 class PZTemplateView: NSImageView {
 
     var delegate: PZTemplateViewDelegate?
