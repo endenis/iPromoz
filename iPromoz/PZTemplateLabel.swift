@@ -32,8 +32,8 @@ class PZTemplateLabel: NSTextField {
     }
 
     override func mouseDown(with event: NSEvent) {
-        Swift.print("mouse down")
         let position = self.convert(event.locationInWindow, from: nil)
+        Swift.print("mouse down \(position)")
         self.clickedDownX = position.x
         self.clickedDownY = position.y
     }
@@ -43,8 +43,6 @@ class PZTemplateLabel: NSTextField {
         Swift.print("mouse dragged \(position) while the frame is \(self.frame)")
         self.frame.origin.x += position.x - self.clickedDownX
         self.frame.origin.y -= position.y - self.clickedDownY
-        self.clickedDownX = position.x
-        self.clickedDownY = position.y
     }
     
     override func mouseUp(with event: NSEvent) {
