@@ -51,6 +51,9 @@ class PZTemplateViewController: NSViewController {
     }
 
     func changeAttributes(_ sender: Any?) {
+        if let _ = exampleLabel {
+            Swift.print("changeAttributes from \(sender)")
+        }
     }
 
     func updateSizes() -> Void {
