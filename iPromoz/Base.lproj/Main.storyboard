@@ -750,6 +750,17 @@
                                                     <action selector="alignmentControlSelected:" target="ULR-Eq-27Y" id="T7V-Fm-9gv"/>
                                                 </connections>
                                             </segmentedControl>
+                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e7R-2g-CHz">
+                                                <rect key="frame" x="79" y="197" width="23" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <buttonCell key="cell" type="roundTextured" title="T" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AW3-lv-ESQ">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="orderFrontFontPanel:" target="rPt-NT-nkU" id="ExP-Ab-0RU"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </customView>
                                 </subviews>
