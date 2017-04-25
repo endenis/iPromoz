@@ -750,17 +750,36 @@
                                                     <action selector="alignmentControlSelected:" target="ULR-Eq-27Y" id="T7V-Fm-9gv"/>
                                                 </connections>
                                             </segmentedControl>
-                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e7R-2g-CHz">
-                                                <rect key="frame" x="79" y="197" width="23" height="25"/>
+                                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P5c-jS-WPx">
+                                                <rect key="frame" x="9" y="166" width="163" height="57"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <buttonCell key="cell" type="roundTextured" title="T" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AW3-lv-ESQ">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="orderFrontFontPanel:" target="rPt-NT-nkU" id="ExP-Ab-0RU"/>
-                                                </connections>
-                                            </button>
+                                                <subviews>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e7R-2g-CHz">
+                                                        <rect key="frame" x="107" y="18" width="23" height="25"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSColorPanel" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AW3-lv-ESQ">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="orderFrontColorPanel:" target="rPt-NT-nkU" id="Bzj-lm-Z4M"/>
+                                                        </connections>
+                                                    </button>
+                                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6CU-I3-1HZ">
+                                                        <rect key="frame" x="31" y="20" width="70" height="22"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Font size" drawsBackground="YES" usesSingleLineMode="YES" id="sjF-c4-NY9">
+                                                            <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="#0" negativeFormat="-#0" hasThousandSeparators="NO" thousandSeparator=" " id="JIc-Q8-Z37">
+                                                                <real key="minimum" value="1"/>
+                                                                <real key="maximum" value="10000"/>
+                                                            </numberFormatter>
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                            </customView>
                                         </subviews>
                                     </customView>
                                 </subviews>
@@ -791,6 +810,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="NSColorPanel" width="32" height="32"/>
         <image name="NSMiniTextAlignCenter" width="11" height="15"/>
         <image name="NSMiniTextAlignLeft" width="11" height="15"/>
         <image name="NSMiniTextAlignRight" width="11" height="15"/>
