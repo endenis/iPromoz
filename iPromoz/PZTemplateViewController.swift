@@ -10,11 +10,14 @@ class PZTemplateViewController: NSViewController {
     @IBOutlet var instructionLabel: NSTextField?
     @IBOutlet var exampleLabel    : PZTemplateLabel?
     @IBOutlet var fontSizeField   : NSTextField?
+    @IBOutlet var textTableView   : NSTableView?
 
     var fontSize: CGFloat = 20.0
     var ratioX: CGFloat = 0.5
     var ratioY: CGFloat = 0.5
     var alignmentCoefficient: CGFloat = 1
+    var texts: [String] = []
+    let defaultLabelText = "EXAMPLE"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +35,9 @@ class PZTemplateViewController: NSViewController {
         }
         let fontManager = NSFontManager.shared()
         fontManager.target = self
+        if let tableView = textTableView {
+            tableView.reloadData()
+        }
     }
 
     func catchNotification(_: Notification) -> Void {
@@ -57,7 +63,12 @@ class PZTemplateViewController: NSViewController {
     }
 
     @IBAction func alignmentControlSelected(_ sender: NSSegmentedControl) {
-        self.alignmentCoefficient = CGFloat(sender.selectedSegment)
+        let updatedAlignmentCoefficient = CGFloat(sender.selectedSegment)
+        if let theLabel = exampleLabel {
+            let x = theLabel.frame.origin.x + theLabel.frame.width * (updatedAlignmentCoefficient - alignmentCoefficient) * 0.5
+            updateLabelPositionRatio(CGPoint(x: x, y: theLabel.frame.origin.y))
+        }
+        self.alignmentCoefficient = updatedAlignmentCoefficient
         updateSizes()
     }
 
@@ -71,6 +82,26 @@ class PZTemplateViewController: NSViewController {
         self.fontSize = CGFloat(sender.integerValue)
         updateSizes()
     }
+    
+    @IBAction func updateTextInTable(sender: NSTextField) {
+        if let tableView = textTableView {
+            let selectedRow = tableView.selectedRow
+            if selectedRow != -1 {
+                if selectedRow >= texts.count {
+                    texts.append(sender.stringValue)
+                }
+                else {
+                    texts[selectedRow] = sender.stringValue
+                }
+                tableView.reloadData()
+            }
+        }
+    }
+    
+    func updateExampleLabelText(_ text: String) {
+        exampleLabel?.stringValue = text
+        updateSizes()
+    }
 
 }
 
@@ -79,6 +110,7 @@ extension PZTemplateViewController: PZTemplateViewDelegate {
     func nothingToDoState() {
         instructionLabel?.isHidden = false
         exampleLabel?.isHidden = true
+        exampleLabel?.stringValue = defaultLabelText
         fontSizeField?.isEnabled = false
         if let templateView = self.view as? PZTemplateView {
             templateView.image = nil
@@ -110,6 +142,38 @@ extension PZTemplateViewController: PZTemplateViewDelegate {
             let heightDelta = (theLabel.frame.height / 2.0)
             self.ratioX = (point.x - templateRectangle.origin.x + widthDetla)  / templateRectangle.width
             self.ratioY = (point.y - templateRectangle.origin.y + heightDelta) / templateRectangle.height
+        }
+    }
+    
+}
+
+extension PZTemplateViewController: NSTableViewDataSource {
+    
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return texts.count + 1
+    }
+}
+
+extension PZTemplateViewController: NSTableViewDelegate {
+
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        if row <= texts.count {
+            let text: String = (row < texts.count) ? texts[row] : ""
+            if let cell = tableView.make(withIdentifier: "TextCellID", owner: nil) as? NSTableCellView {
+                cell.textField!.stringValue = text
+                return cell
+            }
+        }
+        return nil
+    }
+
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        let selectedRow = textTableView!.selectedRow
+        if textTableView!.numberOfSelectedRows != 0 && selectedRow < texts.count && !texts[selectedRow].isEmpty {
+            updateExampleLabelText(texts[selectedRow])
+        }
+        else {
+            updateExampleLabelText(defaultLabelText)
         }
     }
     
