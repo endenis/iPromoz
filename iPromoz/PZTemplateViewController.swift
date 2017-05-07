@@ -9,6 +9,7 @@ class PZTemplateViewController: NSViewController {
 
     @IBOutlet var instructionLabel: NSTextField?
     @IBOutlet var exampleLabel    : PZTemplateLabel?
+    @IBOutlet var fontSizeField   : NSTextField?
 
     var fontSize: CGFloat = 20.0
     var ratioX: CGFloat = 0.5
@@ -66,6 +67,12 @@ class PZTemplateViewController: NSViewController {
             theLabel.textColor = colorPanel.color
         }
     }
+    
+    @IBAction func updateLabelFontSize(sender: NSTextField) {
+        Swift.print("font size is changed")
+        self.fontSize = CGFloat(sender.integerValue)
+        updateSizes()
+    }
 
 }
 
@@ -74,6 +81,7 @@ extension PZTemplateViewController: PZTemplateViewDelegate {
     func nothingToDoState() {
         instructionLabel?.isHidden = false
         exampleLabel?.isHidden = true
+        fontSizeField?.isEnabled = false
         if let templateView = self.view as? PZTemplateView {
             templateView.image = nil
         }
@@ -83,6 +91,8 @@ extension PZTemplateViewController: PZTemplateViewDelegate {
     func workingWithATemplateState(_ templateUrl: URL) {
         instructionLabel?.isHidden = true
         exampleLabel?.isHidden = false
+        fontSizeField?.isEnabled = true
+        fontSizeField?.integerValue = Int(fontSize.rounded())
         Swift.print(templateUrl)
         if let templateView = self.view as? PZTemplateView {
             templateView.image = NSImage.init(contentsOf: templateUrl)
