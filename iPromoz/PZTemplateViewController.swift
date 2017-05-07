@@ -63,13 +63,11 @@ class PZTemplateViewController: NSViewController {
 
     func colorDidChange(sender: Any?) {
         if let colorPanel = sender as? NSColorPanel, let theLabel = exampleLabel {
-            print("Selected colour is: \(colorPanel.color)")
             theLabel.textColor = colorPanel.color
         }
     }
     
     @IBAction func updateLabelFontSize(sender: NSTextField) {
-        Swift.print("font size is changed")
         self.fontSize = CGFloat(sender.integerValue)
         updateSizes()
     }
