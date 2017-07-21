@@ -16,6 +16,7 @@
 		EF89CDE31E4A853D00D87365 /* iPromozTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89CDE21E4A853D00D87365 /* iPromozTests.swift */; };
 		EF89CDF01E4A8C2C00D87365 /* PZTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89CDEF1E4A8C2B00D87365 /* PZTemplateView.swift */; };
 		EF89CDF21E4A979600D87365 /* PZTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89CDF11E4A979600D87365 /* PZTemplateViewController.swift */; };
+		EFB3E6561F2221EB00542B35 /* PZCodeScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB3E6551F2221EB00542B35 /* PZCodeScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		EF89CDE41E4A853D00D87365 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF89CDEF1E4A8C2B00D87365 /* PZTemplateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZTemplateView.swift; sourceTree = "<group>"; };
 		EF89CDF11E4A979600D87365 /* PZTemplateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZTemplateViewController.swift; sourceTree = "<group>"; };
+		EFB3E6551F2221EB00542B35 /* PZCodeScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZCodeScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				EF89CDF11E4A979600D87365 /* PZTemplateViewController.swift */,
 				EF3DEB301E55DB1C00F40D8D /* PZTemplateLabel.swift */,
 				EF04B4611EA5600000F635C6 /* PZTemplateViewDelegate.swift */,
+				EFB3E6551F2221EB00542B35 /* PZCodeScrollView.swift */,
 			);
 			path = iPromoz;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				EF89CDD31E4A853D00D87365 /* ViewController.swift in Sources */,
 				EF89CDF21E4A979600D87365 /* PZTemplateViewController.swift in Sources */,
 				EF89CDD11E4A853D00D87365 /* AppDelegate.swift in Sources */,
+				EFB3E6561F2221EB00542B35 /* PZCodeScrollView.swift in Sources */,
 				EF3DEB311E55DB1C00F40D8D /* PZTemplateLabel.swift in Sources */,
 				EF04B4621EA5600000F635C6 /* PZTemplateViewDelegate.swift in Sources */,
 			);
