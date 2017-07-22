@@ -36,25 +36,20 @@ class PZCodeScrollView: NSScrollView {
     }
 
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
-        Swift.print("draggingEntered. Accepting?")
         let accepting = isDropAcceptable(sender)
-        Swift.print(accepting)
         self.isDragging = accepting
         return accepting ? .copy : NSDragOperation()
     }
     
     override func draggingExited(_ sender: NSDraggingInfo?) {
         self.isDragging = false
-        Swift.print("draggingExited")
     }
     
     override func prepareForDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        Swift.print("prepareForDragOperation. Accepting?")
         return isDropAcceptable(sender)
     }
     
     override func performDragOperation(_ draggingInfo: NSDraggingInfo) -> Bool {
-        Swift.print("performDragOperation")
         self.isDragging = false
         // delegate?.nothingToDoState()
         if let fileUrl = extractFileUrl(draggingInfo) {
