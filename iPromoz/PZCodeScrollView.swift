@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import CSwiftV
 
 class PZCodeScrollView: NSScrollView {
 
@@ -54,6 +55,7 @@ class PZCodeScrollView: NSScrollView {
         // delegate?.nothingToDoState()
         if let fileUrl = extractFileUrl(draggingInfo) {
             Swift.print(fileUrl)
+            let codes = extractCodesFromUrl(fileUrl)
             // delegate?.workingWithATemplateState(templateUrl)
             return true
         }
@@ -67,5 +69,19 @@ class PZCodeScrollView: NSScrollView {
             }
         }
         return nil
+    }
+
+    func extractCodesFromUrl(_ fileUrl: URL) -> [String] {
+        do {
+            let csvString = try String(contentsOf: fileUrl, encoding: String.Encoding.utf8)
+            let csv = CSwiftV(with: csvString)
+            let codes = csv.rows.filter { $0.count == 1 && $0.first != nil }.map { $0.first! }
+            Swift.print(codes)
+            return codes
+        }
+        catch {
+            Swift.print("Error while reading the CSV file")
+            return []
+        }
     }
 }
