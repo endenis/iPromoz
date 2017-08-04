@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A052D2EB8822C5E5FE9FA0E /* Pods_iPromoz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0099C6EA90FF9869C3929B5B /* Pods_iPromoz.framework */; };
 		EF04B4621EA5600000F635C6 /* PZTemplateViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF04B4611EA5600000F635C6 /* PZTemplateViewDelegate.swift */; };
 		EF3DEB311E55DB1C00F40D8D /* PZTemplateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3DEB301E55DB1C00F40D8D /* PZTemplateLabel.swift */; };
 		EF89CDD11E4A853D00D87365 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89CDD01E4A853D00D87365 /* AppDelegate.swift */; };
@@ -30,6 +31,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0099C6EA90FF9869C3929B5B /* Pods_iPromoz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iPromoz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		182D8173BCF27CA8C711C2CF /* Pods-iPromoz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPromoz.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPromoz/Pods-iPromoz.release.xcconfig"; sourceTree = "<group>"; };
+		19092C2F28F897263B138CCB /* Pods-iPromoz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPromoz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iPromoz/Pods-iPromoz.debug.xcconfig"; sourceTree = "<group>"; };
 		EF04B4611EA5600000F635C6 /* PZTemplateViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZTemplateViewDelegate.swift; sourceTree = "<group>"; };
 		EF3DEB301E55DB1C00F40D8D /* PZTemplateLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZTemplateLabel.swift; sourceTree = "<group>"; };
 		EF89CDCD1E4A853D00D87365 /* iPromoz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPromoz.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A052D2EB8822C5E5FE9FA0E /* Pods_iPromoz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,12 +69,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1CE2E12A086AF78593A41019 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0099C6EA90FF9869C3929B5B /* Pods_iPromoz.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EF89CDC41E4A853D00D87365 = {
 			isa = PBXGroup;
 			children = (
 				EF89CDCF1E4A853D00D87365 /* iPromoz */,
 				EF89CDE11E4A853D00D87365 /* iPromozTests */,
 				EF89CDCE1E4A853D00D87365 /* Products */,
+				F873BA42F7C2A7552387EFE2 /* Pods */,
+				1CE2E12A086AF78593A41019 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,6 +123,15 @@
 			path = iPromozTests;
 			sourceTree = "<group>";
 		};
+		F873BA42F7C2A7552387EFE2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				19092C2F28F897263B138CCB /* Pods-iPromoz.debug.xcconfig */,
+				182D8173BCF27CA8C711C2CF /* Pods-iPromoz.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -115,9 +139,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EF89CDE71E4A853D00D87365 /* Build configuration list for PBXNativeTarget "iPromoz" */;
 			buildPhases = (
+				BDC2B43FB18548F07FE8DBA1 /* [CP] Check Pods Manifest.lock */,
 				EF89CDC91E4A853D00D87365 /* Sources */,
 				EF89CDCA1E4A853D00D87365 /* Frameworks */,
 				EF89CDCB1E4A853D00D87365 /* Resources */,
+				26F1DDC92B8CD032230781B4 /* [CP] Embed Pods Frameworks */,
+				D3B44C384633CBC34C15ED64 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -204,6 +231,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		26F1DDC92B8CD032230781B4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iPromoz/Pods-iPromoz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BDC2B43FB18548F07FE8DBA1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D3B44C384633CBC34C15ED64 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iPromoz/Pods-iPromoz-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EF89CDC91E4A853D00D87365 /* Sources */ = {
@@ -342,6 +417,7 @@
 		};
 		EF89CDE81E4A853D00D87365 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19092C2F28F897263B138CCB /* Pods-iPromoz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -355,6 +431,7 @@
 		};
 		EF89CDE91E4A853D00D87365 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 182D8173BCF27CA8C711C2CF /* Pods-iPromoz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
