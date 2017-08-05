@@ -10,6 +10,7 @@
 		6A052D2EB8822C5E5FE9FA0E /* Pods_iPromoz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0099C6EA90FF9869C3929B5B /* Pods_iPromoz.framework */; };
 		EF04B4621EA5600000F635C6 /* PZTemplateViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF04B4611EA5600000F635C6 /* PZTemplateViewDelegate.swift */; };
 		EF3DEB311E55DB1C00F40D8D /* PZTemplateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3DEB301E55DB1C00F40D8D /* PZTemplateLabel.swift */; };
+		EF57BBEA1F368EC700AF0351 /* PZCsvReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF57BBE91F368EC700AF0351 /* PZCsvReader.swift */; };
 		EF89CDD11E4A853D00D87365 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89CDD01E4A853D00D87365 /* AppDelegate.swift */; };
 		EF89CDD31E4A853D00D87365 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF89CDD21E4A853D00D87365 /* ViewController.swift */; };
 		EF89CDD51E4A853D00D87365 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF89CDD41E4A853D00D87365 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 		19092C2F28F897263B138CCB /* Pods-iPromoz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPromoz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iPromoz/Pods-iPromoz.debug.xcconfig"; sourceTree = "<group>"; };
 		EF04B4611EA5600000F635C6 /* PZTemplateViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZTemplateViewDelegate.swift; sourceTree = "<group>"; };
 		EF3DEB301E55DB1C00F40D8D /* PZTemplateLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZTemplateLabel.swift; sourceTree = "<group>"; };
+		EF57BBE91F368EC700AF0351 /* PZCsvReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZCsvReader.swift; sourceTree = "<group>"; };
 		EF89CDCD1E4A853D00D87365 /* iPromoz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPromoz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF89CDD01E4A853D00D87365 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF89CDD21E4A853D00D87365 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				EF3DEB301E55DB1C00F40D8D /* PZTemplateLabel.swift */,
 				EF04B4611EA5600000F635C6 /* PZTemplateViewDelegate.swift */,
 				EFB3E6551F2221EB00542B35 /* PZCodeScrollView.swift */,
+				EF57BBE91F368EC700AF0351 /* PZCsvReader.swift */,
 			);
 			path = iPromoz;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				EF89CDF21E4A979600D87365 /* PZTemplateViewController.swift in Sources */,
 				EF89CDD11E4A853D00D87365 /* AppDelegate.swift in Sources */,
 				EFB3E6561F2221EB00542B35 /* PZCodeScrollView.swift in Sources */,
+				EF57BBEA1F368EC700AF0351 /* PZCsvReader.swift in Sources */,
 				EF3DEB311E55DB1C00F40D8D /* PZTemplateLabel.swift in Sources */,
 				EF04B4621EA5600000F635C6 /* PZTemplateViewDelegate.swift in Sources */,
 			);
