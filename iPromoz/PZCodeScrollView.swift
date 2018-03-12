@@ -10,6 +10,8 @@ import Cocoa
 
 class PZCodeScrollView: NSScrollView {
 
+    var delegate: PZCodeScrollViewDelegate?
+
     override func awakeFromNib() {
         setup()
     }
@@ -54,8 +56,9 @@ class PZCodeScrollView: NSScrollView {
         // delegate?.nothingToDoState()
         if let fileUrl = extractFileUrl(draggingInfo) {
             Swift.print(fileUrl)
-            let codes = PZCsvReader.readCodesFromFileUrl(fileUrl)
-            Swift.print(codes)
+            delegate?.importCodesFromCsvUrl(fileUrl)
+            //let codes = PZCsvReader.readCodesFromFileUrl(fileUrl)
+            //Swift.print(codes)
             // delegate?.workingWithATemplateState(templateUrl)
             return true
         }

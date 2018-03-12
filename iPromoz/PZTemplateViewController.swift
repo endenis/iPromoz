@@ -35,9 +35,7 @@ class PZTemplateViewController: NSViewController {
         }
         let fontManager = NSFontManager.shared()
         fontManager.target = self
-        if let tableView = textTableView {
-            tableView.reloadData()
-        }
+        textTableView?.reloadData()
     }
 
     func catchNotification(_: Notification) -> Void {
@@ -73,8 +71,8 @@ class PZTemplateViewController: NSViewController {
     }
 
     func colorDidChange(sender: Any?) {
-        if let colorPanel = sender as? NSColorPanel, let theLabel = exampleLabel {
-            theLabel.textColor = colorPanel.color
+        if let colorPanel = sender as? NSColorPanel {
+            exampleLabel?.textColor = colorPanel.color
         }
     }
     

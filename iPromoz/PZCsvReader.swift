@@ -19,7 +19,7 @@ class PZCsvReader {
             return codes
         }
         catch {
-            // TODO: raise instead of silent failing
+            // TODO: raise instead of silent failing (and later display an error message to the user)
             Swift.print("Error while reading the CSV file")
             return []
         }
