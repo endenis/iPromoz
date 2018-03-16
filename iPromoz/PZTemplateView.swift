@@ -9,7 +9,7 @@ class PZTemplateView: NSImageView {
 
     var delegate: PZTemplateViewDelegate?
     var surroundingLineWidth: CGFloat = 4.2
-    
+
     override func draw(_ dirtyRect: NSRect) {
         let patternImage: NSImage! = NSImage(named: "wave_pattern")
         let backgroundColor = NSColor(patternImage: patternImage)
@@ -48,7 +48,7 @@ class PZTemplateView: NSImageView {
     var isDragging = false {
         didSet {
             if !isDragging {
-                delegate?.nothingToDoState()
+                // it's possible to reset some state here. Not sure if needed.
             }
             needsDisplay = true
         }
@@ -70,8 +70,8 @@ class PZTemplateView: NSImageView {
 
     override func performDragOperation(_ draggingInfo: NSDraggingInfo) -> Bool {
         self.isDragging = false
-        delegate?.nothingToDoState()
         if let templateUrl = extractTemplateUrl(draggingInfo) {
+            delegate?.nothingToDoState()
             delegate?.workingWithATemplateState(templateUrl)
             return true
         }

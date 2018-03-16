@@ -176,3 +176,14 @@ extension PZTemplateViewController: NSTableViewDelegate {
     }
     
 }
+
+extension PZTemplateViewController : PZCodeScrollViewDelegate {
+
+    func importCodesFromCsvUrl(_ csvUrl: URL) {
+        let codesFromCsv = PZCsvReader.readCodesFromFileUrl(csvUrl)
+        texts = codesFromCsv
+        Swift.print(texts)
+        textTableView?.reloadData()
+    }
+
+}

@@ -839,7 +839,7 @@
                                                             </tableColumns>
                                                             <connections>
                                                                 <outlet property="dataSource" destination="ULR-Eq-27Y" id="3d7-7Q-C4d"/>
-                                                                <outlet property="delegate" destination="ULR-Eq-27Y" id="1bZ-en-tiT"/>
+                                                                <outlet property="delegate" destination="ULR-Eq-27Y" id="IUI-uD-YrJ"/>
                                                             </connections>
                                                         </tableView>
                                                     </subviews>
@@ -856,6 +856,9 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="161" height="23"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableHeaderView>
+                                                <connections>
+                                                    <outlet property="controller" destination="ULR-Eq-27Y" id="9FJ-wU-P4q"/>
+                                                </connections>
                                             </scrollView>
                                         </subviews>
                                     </customView>

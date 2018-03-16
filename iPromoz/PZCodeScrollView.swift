@@ -11,6 +11,7 @@ import Cocoa
 class PZCodeScrollView: NSScrollView {
 
     var delegate: PZCodeScrollViewDelegate?
+    @IBOutlet var controller: PZTemplateViewController?
 
     override func awakeFromNib() {
         setup()
@@ -20,6 +21,7 @@ class PZCodeScrollView: NSScrollView {
 
     func setup() {
         register(forDraggedTypes: [NSURLPboardType])
+        delegate = controller
     }
 
     func isDropAcceptable(_ draggingInfo: NSDraggingInfo) -> Bool {
@@ -30,7 +32,6 @@ class PZCodeScrollView: NSScrollView {
     var isDragging = false {
         didSet {
             if !isDragging {
-                // delegate?.nothingToDoState()
                 // change state?
             }
             needsDisplay = true
@@ -57,9 +58,6 @@ class PZCodeScrollView: NSScrollView {
         if let fileUrl = extractFileUrl(draggingInfo) {
             Swift.print(fileUrl)
             delegate?.importCodesFromCsvUrl(fileUrl)
-            //let codes = PZCsvReader.readCodesFromFileUrl(fileUrl)
-            //Swift.print(codes)
-            // delegate?.workingWithATemplateState(templateUrl)
             return true
         }
         return false
