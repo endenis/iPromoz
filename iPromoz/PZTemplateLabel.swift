@@ -14,6 +14,7 @@ class PZTemplateLabel: NSTextField {
 
     var clickedDownX: CGFloat = 0
     var clickedDownY: CGFloat = 0
+    let mouseHoverBackgroundColor = NSColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 0.2)
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -23,7 +24,7 @@ class PZTemplateLabel: NSTextField {
 
     override func mouseEntered(with event: NSEvent) {
         self.drawsBackground = true
-        self.backgroundColor = NSColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 0.2)
+        self.backgroundColor = self.mouseHoverBackgroundColor
     }
 
     override func mouseExited(with event: NSEvent) {

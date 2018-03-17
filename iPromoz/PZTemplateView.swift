@@ -9,9 +9,10 @@ class PZTemplateView: NSImageView {
 
     var delegate: PZTemplateViewDelegate?
     var surroundingLineWidth: CGFloat = 4.2
+    let backgroundImageName = "wave_pattern"
 
     override func draw(_ dirtyRect: NSRect) {
-        let patternImage: NSImage! = NSImage(named: "wave_pattern")
+        let patternImage: NSImage! = NSImage(named: self.backgroundImageName)
         let backgroundColor = NSColor(patternImage: patternImage)
 
         super.draw(dirtyRect)
