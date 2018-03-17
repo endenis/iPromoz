@@ -8,9 +8,10 @@ import Cocoa
 class PZTemplateViewController: NSViewController {
 
     @IBOutlet var instructionLabel: NSTextField?
-    @IBOutlet var exampleLabel    : PZTemplateLabel?
-    @IBOutlet var fontSizeField   : NSTextField?
-    @IBOutlet var textTableView   : NSTableView?
+    @IBOutlet var exampleLabel: PZTemplateLabel?
+    @IBOutlet var fontSizeField: NSTextField?
+    @IBOutlet var textTableView: NSTableView?
+    @IBOutlet var generationButton: NSButton?
 
     var fontSize: CGFloat = 20.0
     var ratioX: CGFloat = 0.5
@@ -101,6 +102,23 @@ class PZTemplateViewController: NSViewController {
         updateSizes()
     }
 
+    @IBAction func generate(sender: NSButton) {
+        Swift.print("generate() ibaction")
+    }
+
+    func checkGenerationButtonState() {
+        generationButton?.isEnabled = shouldGenerationButtonBeEnabled()
+    }
+
+    func shouldGenerationButtonBeEnabled() -> Bool {
+        if let templateView = self.view as? PZTemplateView {
+            if templateView.image != nil && !texts.isEmpty {
+               return true
+            }
+        }
+        return false
+    }
+
 }
 
 extension PZTemplateViewController: PZTemplateViewDelegate {
@@ -132,6 +150,7 @@ extension PZTemplateViewController: PZTemplateViewDelegate {
             let tackingArea = NSTrackingArea.init(rect: theLabel.bounds, options: [NSTrackingAreaOptions.mouseEnteredAndExited, NSTrackingAreaOptions.activeAlways], owner: theLabel, userInfo: nil)
             theLabel.addTrackingArea(tackingArea)
         }
+        checkGenerationButtonState()
     }
 
     func updateLabelPositionRatio(_ point: CGPoint) {
@@ -182,8 +201,8 @@ extension PZTemplateViewController : PZCodeScrollViewDelegate {
     func importCodesFromCsvUrl(_ csvUrl: URL) {
         let codesFromCsv = PZCsvReader.readCodesFromFileUrl(csvUrl)
         texts = codesFromCsv
-        Swift.print(texts)
         textTableView?.reloadData()
+        checkGenerationButtonState()
     }
 
 }

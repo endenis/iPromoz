@@ -787,14 +787,14 @@
                                                 </subviews>
                                             </customView>
                                             <scrollView wantsLayer="YES" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgn-UH-in0" customClass="PZCodeScrollView" customModule="iPromoz" customModuleProvider="target">
-                                                <rect key="frame" x="9" y="20" width="163" height="135"/>
+                                                <rect key="frame" x="9" y="47" width="163" height="108"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                                 <clipView key="contentView" ambiguous="YES" id="68F-cF-ggr">
-                                                    <rect key="frame" x="1" y="0.0" width="161" height="134"/>
+                                                    <rect key="frame" x="1" y="0.0" width="161" height="107"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="264-L8-ACH" viewBased="YES" id="HqL-Da-KkA">
-                                                            <rect key="frame" x="0.0" y="0.0" width="161" height="111"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="161" height="84"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -860,6 +860,17 @@
                                                     <outlet property="controller" destination="ULR-Eq-27Y" id="9FJ-wU-P4q"/>
                                                 </connections>
                                             </scrollView>
+                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T88-3h-7Qt">
+                                                <rect key="frame" x="43" y="-1" width="96" height="32"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <buttonCell key="cell" type="push" title="Generate" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4P8-Ot-wD5">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="generateWithSender:" target="ULR-Eq-27Y" id="cZB-24-qwe"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </customView>
                                 </subviews>
@@ -882,6 +893,7 @@
                     <connections>
                         <outlet property="exampleLabel" destination="5n5-oC-PCW" id="wdO-8x-zzX"/>
                         <outlet property="fontSizeField" destination="6CU-I3-1HZ" id="fZi-v8-qXB"/>
+                        <outlet property="generationButton" destination="T88-3h-7Qt" id="YhQ-u6-qsI"/>
                         <outlet property="instructionLabel" destination="vMK-xs-ro6" id="Wxr-dH-AcB"/>
                         <outlet property="textTableView" destination="HqL-Da-KkA" id="PYV-H8-SSa"/>
                         <outlet property="view" destination="d3m-pR-twm" id="mi2-bd-wei"/>

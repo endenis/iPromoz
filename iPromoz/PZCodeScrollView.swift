@@ -54,7 +54,6 @@ class PZCodeScrollView: NSScrollView {
     
     override func performDragOperation(_ draggingInfo: NSDraggingInfo) -> Bool {
         self.isDragging = false
-        // delegate?.nothingToDoState()
         if let fileUrl = extractFileUrl(draggingInfo) {
             Swift.print(fileUrl)
             delegate?.importCodesFromCsvUrl(fileUrl)
