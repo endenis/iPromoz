@@ -169,6 +169,25 @@ extension PZTemplateViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
         return texts.count + 1
     }
+
+    func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {
+        if let code = object as? String {
+            setCodeAt(code: code, row: row)
+        }
+    }
+
+    func setCodeAt(code: String, row: Int) {
+        let count = texts.count
+        if row < count {
+            Swift.print("set \(code) at row \(row)")
+            texts[row] = code
+        }
+        else {
+            texts.append(code)
+            Swift.print("appended \(code)")
+            checkGenerationButtonState()
+        }
+    }
 }
 
 extension PZTemplateViewController: NSTableViewDelegate {
@@ -193,7 +212,11 @@ extension PZTemplateViewController: NSTableViewDelegate {
             updateExampleLabelText(defaultLabelText)
         }
     }
-    
+
+    func tableView(_ tableView: NSTableView, didAdd: NSTableRowView, forRow: Int) {
+        Swift.print("added row for row \(forRow)")
+        // texts.append("")
+    }
 }
 
 extension PZTemplateViewController : PZCodeScrollViewDelegate {
