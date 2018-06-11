@@ -14,7 +14,7 @@ class PZCsvReader {
     class func readCodesFromFileUrl(_ fileUrl: URL) -> [String] {
         do {
             let csvString = try String(contentsOf: fileUrl, encoding: String.Encoding.utf8)
-            let csv = CSwiftV(with: csvString)
+            let csv = CSwiftV(with: "skip_headers\n\(csvString)")
             let codes = csv.rows.filter { $0.count == 1 && $0.first != nil }.map { $0.first! }
             return codes
         }

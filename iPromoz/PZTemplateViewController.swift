@@ -215,7 +215,6 @@ extension PZTemplateViewController: NSTableViewDelegate {
 
     func tableView(_ tableView: NSTableView, didAdd: NSTableRowView, forRow: Int) {
         Swift.print("added row for row \(forRow)")
-        // texts.append("")
     }
 }
 

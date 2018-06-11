@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iPromoz/PZTemplateViewController.swift"
-            timestampString = "543191534.36625"
+            timestampString = "550402412.423817"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "tableView(_:setObjectValue:for:row:)"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "importCodesFromCsvUrl(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
