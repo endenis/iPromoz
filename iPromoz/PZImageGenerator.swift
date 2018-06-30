@@ -12,35 +12,39 @@ class PZImageGenerator: NSObject {
 
     var codes: [String] = []
     var templateImage: NSImage? = nil
-    var x: CGFloat = 0
-    var y: CGFloat = 0
-    var ratioX: CGFloat = 0.5
-    var ratioY: CGFloat = 0.5
+    var ratioX: CGFloat = 0
+    var ratioY: CGFloat = 0
+    var templateRatio: CGFloat = 0.0
     var label: PZTemplateLabel? = nil
+    var hiddenLabel: PZTemplateLabel? = nil
     var alignmentCoefficient: CGFloat = 1
 
-    init(codes: [String], templateImage: NSImage, x: CGFloat, y: CGFloat, ratioX: CGFloat, ratioY: CGFloat, label: PZTemplateLabel, alignmentCoefficient: CGFloat) {
+    init(codes: [String], templateImage: NSImage, ratioX: CGFloat, ratioY: CGFloat, templateRatio: CGFloat, label: PZTemplateLabel, hiddenLabel: PZTemplateLabel, alignmentCoefficient: CGFloat) {
         self.codes = codes
         self.templateImage = templateImage
-        self.x = x
-        self.y = y
-        self.label = label
         self.ratioX = ratioX
         self.ratioY = ratioY
+        self.label = label
+        self.hiddenLabel = hiddenLabel
+        self.templateRatio = templateRatio
         self.alignmentCoefficient = alignmentCoefficient
     }
 
     func generate() {
         let code = self.codes.first!
-        if let image = self.templateImage, let label = self.label {
+        if let image = self.templateImage, let label = self.label, let hiddenLabel = self.hiddenLabel, let font = label.font {
             let imageRect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
-            label.stringValue = code
-            label.sizeToFit()
-            let proportionalWidth = label.frame.width / self.ratioX
-            let proportionalHeight = label.frame.height / self.ratioY
-            let alignedX = self.x + proportionalWidth * alignmentCoefficient
-            let textRect = CGRect(x: alignedX, y: self.y, width: proportionalWidth, height: proportionalHeight)
+            hiddenLabel.stringValue = code
+            hiddenLabel.font = NSFont.init(descriptor: font.fontDescriptor, size: (font.pointSize / self.templateRatio))
+            hiddenLabel.sizeToFit()
+            let proportionalWidth = hiddenLabel.frame.width
+            let proportionalHeight = hiddenLabel.frame.height
+            let x = self.ratioX * image.size.width
+            let y = self.ratioY * image.size.height - proportionalHeight * 0.5
+            let alignedX = x - proportionalWidth * alignmentCoefficient / 2
+            let textRect = CGRect(x: alignedX, y: y, width: proportionalWidth, height: proportionalHeight)
             let textStyle = NSMutableParagraphStyle.default().mutableCopy() as! NSMutableParagraphStyle
+            textStyle.alignment = .center
             let textFontAttributes = [
                 NSFontAttributeName: label.font!,
                 NSForegroundColorAttributeName: label.textColor!,

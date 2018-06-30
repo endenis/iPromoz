@@ -9,6 +9,7 @@ class PZTemplateViewController: NSViewController {
 
     @IBOutlet var instructionLabel: NSTextField?
     @IBOutlet var exampleLabel: PZTemplateLabel?
+    @IBOutlet var hiddenLabel: PZTemplateLabel?
     @IBOutlet var fontSizeField: NSTextField?
     @IBOutlet var textTableView: NSTableView?
     @IBOutlet var generationButton: NSButton?
@@ -104,10 +105,8 @@ class PZTemplateViewController: NSViewController {
 
     @IBAction func generate(sender: NSButton) {
         Swift.print("generate() ibaction")
-        if let templateView = self.view as? PZTemplateView, let templateRectangle: NSRect = templateView.imageRectangle(), let label = exampleLabel {
-            let x = label.frame.origin.x - templateRectangle.origin.x
-            let y = label.frame.origin.y - templateRectangle.origin.y
-            let generator = PZImageGenerator(codes: self.texts, templateImage: templateView.image!, x: x, y: y, ratioX: ratioX, ratioY: ratioY, label: label, alignmentCoefficient: self.alignmentCoefficient)
+        if let templateView = self.view as? PZTemplateView, let templateRectangle: NSRect = templateView.imageRectangle(), let templateRatio: CGFloat = templateView.imageResizeRatio(), let label = exampleLabel, let hiddenLabel = self.hiddenLabel {
+            let generator = PZImageGenerator(codes: self.texts, templateImage: templateView.image!, ratioX: ratioX, ratioY: ratioY, templateRatio: templateRatio, label: label, hiddenLabel: hiddenLabel, alignmentCoefficient: self.alignmentCoefficient)
           generator.generate()
         }
     }
