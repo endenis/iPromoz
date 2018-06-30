@@ -104,6 +104,12 @@ class PZTemplateViewController: NSViewController {
 
     @IBAction func generate(sender: NSButton) {
         Swift.print("generate() ibaction")
+        if let templateView = self.view as? PZTemplateView, let templateRectangle: NSRect = templateView.imageRectangle(), let label = exampleLabel {
+            let x = label.frame.origin.x - templateRectangle.origin.x
+            let y = label.frame.origin.y - templateRectangle.origin.y
+            let generator = PZImageGenerator(codes: self.texts, templateImage: templateView.image!, x: x, y: y, ratioX: ratioX, ratioY: ratioY, label: label, alignmentCoefficient: self.alignmentCoefficient)
+          generator.generate()
+        }
     }
 
     func checkGenerationButtonState() {
