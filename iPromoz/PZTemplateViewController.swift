@@ -18,6 +18,7 @@ class PZTemplateViewController: NSViewController {
     var ratioX: CGFloat = 0.5
     var ratioY: CGFloat = 0.5
     var alignmentCoefficient: CGFloat = 1
+    var templateUrl: URL? = nil
     var texts: [String] = []
     let defaultLabelText = "EXAMPLE"
 
@@ -105,8 +106,8 @@ class PZTemplateViewController: NSViewController {
 
     @IBAction func generate(sender: NSButton) {
         Swift.print("generate() ibaction")
-        if let templateView = self.view as? PZTemplateView, let templateRectangle: NSRect = templateView.imageRectangle(), let templateRatio: CGFloat = templateView.imageResizeRatio(), let label = exampleLabel, let hiddenLabel = self.hiddenLabel {
-            let generator = PZImageGenerator(codes: self.texts, templateImage: templateView.image!, ratioX: ratioX, ratioY: ratioY, templateRatio: templateRatio, label: label, hiddenLabel: hiddenLabel, alignmentCoefficient: self.alignmentCoefficient)
+        if let templateView = self.view as? PZTemplateView, let templateRectangle: NSRect = templateView.imageRectangle(), let templateRatio: CGFloat = templateView.imageResizeRatio(), let label = exampleLabel, let hiddenLabel = self.hiddenLabel, let templateUrl = self.templateUrl {
+            let generator = PZImageGenerator(codes: self.texts, _templateImage: templateView.image!, templateUrl: templateUrl, ratioX: ratioX, ratioY: ratioY, templateRatio: templateRatio, label: label, hiddenLabel: hiddenLabel, alignmentCoefficient: self.alignmentCoefficient)
           generator.generate()
         }
     }
@@ -144,6 +145,7 @@ extension PZTemplateViewController: PZTemplateViewDelegate {
         exampleLabel?.isHidden = false
         fontSizeField?.isEnabled = true
         fontSizeField?.integerValue = Int(fontSize.rounded())
+        self.templateUrl = templateUrl
         Swift.print(templateUrl)
         if let templateView = self.view as? PZTemplateView {
             templateView.image = NSImage.init(contentsOf: templateUrl)
