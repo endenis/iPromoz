@@ -17,10 +17,11 @@ class PZCodeScrollView: NSScrollView {
         setup()
     }
 
-    let draggingOptions = [NSPasteboardURLReadingContentsConformToTypesKey:["public.comma-separated-values-text"]]
+    let draggingOptions = [NSPasteboard.ReadingOptionKey.urlReadingContentsConformToTypes:["public.comma-separated-values-text"]]
 
     func setup() {
-        register(forDraggedTypes: [NSURLPboardType])
+        let NSURLPboardType = NSPasteboard.PasteboardType(kUTTypeURL as String) // workaround for swift 4
+        registerForDraggedTypes([NSURLPboardType])
         delegate = controller
     }
 

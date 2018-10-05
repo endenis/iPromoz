@@ -31,7 +31,7 @@ class PZTemplateViewController: NSViewController {
     }
 
     func setupColorPanel() {
-        let colorPanel = NSColorPanel.shared()
+        let colorPanel = NSColorPanel.shared
         colorPanel.setTarget(self)
         colorPanel.setAction(#selector(colorDidChange(sender:)))
         colorPanel.isContinuous = true
@@ -42,12 +42,12 @@ class PZTemplateViewController: NSViewController {
             templateView.delegate = self
             templateView.postsFrameChangedNotifications = true
             let nc = NotificationCenter.default
-            nc.addObserver(forName: NSNotification.Name.NSViewFrameDidChange, object: templateView, queue: nil, using: catchNotification)
+            nc.addObserver(forName: NSView.frameDidChangeNotification, object: templateView, queue: nil, using: catchNotification)
         }
     }
 
     func setupFontManager() {
-        let fontManager = NSFontManager.shared()
+        let fontManager = NSFontManager.shared
         fontManager.target = self
     }
 
@@ -87,7 +87,7 @@ class PZTemplateViewController: NSViewController {
         updateSizes()
     }
 
-    func colorDidChange(sender: Any?) {
+    @objc func colorDidChange(sender: Any?) {
         if let colorPanel = sender as? NSColorPanel {
             exampleLabel?.textColor = colorPanel.color
         }
@@ -184,7 +184,7 @@ extension PZTemplateViewController: PZTemplateViewDelegate {
 
     func addTrackingArea(label: PZTemplateLabel?) {
         if let labelToTrack = label {
-            let tackingArea = NSTrackingArea.init(rect: labelToTrack.bounds, options: [NSTrackingAreaOptions.mouseEnteredAndExited, NSTrackingAreaOptions.activeAlways], owner: labelToTrack, userInfo: nil)
+            let tackingArea = NSTrackingArea.init(rect: labelToTrack.bounds, options: [NSTrackingArea.Options.mouseEnteredAndExited, NSTrackingArea.Options.activeAlways], owner: labelToTrack, userInfo: nil)
             labelToTrack.addTrackingArea(tackingArea)
         }
     }
@@ -231,7 +231,7 @@ extension PZTemplateViewController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         if row <= texts.count {
             let text: String = (row < texts.count) ? texts[row] : ""
-            if let cell = tableView.make(withIdentifier: "TextCellID", owner: nil) as? NSTableCellView {
+            if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "TextCellID"), owner: nil) as? NSTableCellView {
                 cell.textField!.stringValue = text
                 return cell
             }

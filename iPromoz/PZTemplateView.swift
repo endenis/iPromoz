@@ -12,7 +12,7 @@ class PZTemplateView: NSImageView {
     let backgroundImageName = "wave_pattern"
 
     override func draw(_ dirtyRect: NSRect) {
-        let patternImage: NSImage! = NSImage(named: self.backgroundImageName)
+        let patternImage: NSImage! = NSImage(named: NSImage.Name(rawValue: self.backgroundImageName))
         let backgroundColor = NSColor(patternImage: patternImage)
 
         super.draw(dirtyRect)
@@ -35,10 +35,11 @@ class PZTemplateView: NSImageView {
         setup()
     }
 
-    let draggingOptions = [NSPasteboardURLReadingContentsConformToTypesKey:NSImage.imageTypes()]
+    let draggingOptions = [NSPasteboard.ReadingOptionKey.urlReadingContentsConformToTypes:NSImage.imageTypes]
 
     func setup() {
-        register(forDraggedTypes: [NSURLPboardType])
+        let NSURLPboardType = NSPasteboard.PasteboardType(kUTTypeURL as String) // workaround for swift 4
+        registerForDraggedTypes([NSURLPboardType])
     }
 
     func isDropAcceptable(_ draggingInfo: NSDraggingInfo) -> Bool {

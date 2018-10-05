@@ -66,17 +66,17 @@ class PZImageGenerator: NSObject {
             let x = self.ratioX * CGFloat(imageRepresentation.pixelsWide) - hiddenLabel.frame.width * alignmentCoefficient / 2
             let y = self.ratioY * CGFloat(imageRepresentation.pixelsHigh) - hiddenLabel.frame.height / 2
             let textRect = CGRect(x: x, y: y, width: hiddenLabel.frame.width, height: hiddenLabel.frame.height)
-            let textStyle = NSMutableParagraphStyle.default().mutableCopy() as! NSMutableParagraphStyle
+            let textStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
             textStyle.alignment = .center
             let textFontAttributes = [
-                NSFontAttributeName: hiddenLabel.font!,
-                NSForegroundColorAttributeName: label.textColor!,
-                NSParagraphStyleAttributeName: textStyle
+                NSAttributedStringKey.font: hiddenLabel.font!,
+                NSAttributedStringKey.foregroundColor: label.textColor!,
+                NSAttributedStringKey.paragraphStyle: textStyle
             ]
-            let bitmapImageRepresentation: NSBitmapImageRep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: Int(imageRepresentation.pixelsWide), pixelsHigh: Int(imageRepresentation.pixelsHigh), bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true, isPlanar: false, colorSpaceName: NSCalibratedRGBColorSpace, bytesPerRow: 0, bitsPerPixel: 0)!
+            let bitmapImageRepresentation: NSBitmapImageRep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: Int(imageRepresentation.pixelsWide), pixelsHigh: Int(imageRepresentation.pixelsHigh), bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true, isPlanar: false, colorSpaceName: NSColorSpaceName.calibratedRGB, bytesPerRow: 0, bitsPerPixel: 0)!
             NSAffineTransform.init().set()
             NSGraphicsContext.saveGraphicsState()
-            NSGraphicsContext.setCurrent(NSGraphicsContext(bitmapImageRep: bitmapImageRepresentation))
+            NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: bitmapImageRepresentation)
             image.draw(in: imageRect)
             code.draw(in: textRect, withAttributes: textFontAttributes)
             NSGraphicsContext.restoreGraphicsState()
@@ -104,7 +104,7 @@ class PZImageGenerator: NSObject {
 
     func writeJpegFile(bitmapImageRepresentation: NSBitmapImageRep, to: URL) {
         do {
-            try bitmapImageRepresentation.representation(using: .JPEG, properties: [:])!.write(to: to)
+            try bitmapImageRepresentation.representation(using: .jpeg, properties: [:])!.write(to: to)
         }
         catch {
             print(error) // TODO: handle errors better
