@@ -12,7 +12,6 @@ class PZImageGenerator: NSObject {
 
     var codes: [String] = []
     var templateImage: NSImage? = nil
-    var templateImageInView: NSImage? = nil
     var templateUrl: URL? = nil
     var ratioX: CGFloat = 0
     var ratioY: CGFloat = 0
@@ -21,10 +20,9 @@ class PZImageGenerator: NSObject {
     var hiddenLabel: PZTemplateLabel? = nil
     var alignmentCoefficient: CGFloat = 1
 
-    init(codes: [String], templateImageInView: NSImage, templateUrl: URL, ratioX: CGFloat, ratioY: CGFloat, templateRatio: CGFloat, label: PZTemplateLabel, hiddenLabel: PZTemplateLabel, alignmentCoefficient: CGFloat) {
+    init(codes: [String], templateUrl: URL, ratioX: CGFloat, ratioY: CGFloat, templateRatio: CGFloat, label: PZTemplateLabel, hiddenLabel: PZTemplateLabel, alignmentCoefficient: CGFloat) {
         self.codes = codes
         self.templateImage = NSImage.init(contentsOf: templateUrl)
-        self.templateImageInView = templateImageInView
         self.ratioX = ratioX
         self.ratioY = ratioY
         self.label = label
@@ -34,19 +32,13 @@ class PZImageGenerator: NSObject {
     }
 
     func generate() {
-        let code = self.codes.first!
-        if let image = self.templateImage, let imageRepresentation = image.representations.first, let label = self.label, let hiddenLabel = self.hiddenLabel, let font = label.font, let templateImageInView = self.templateImageInView {
-            let scaling = CGFloat(imageRepresentation.pixelsWide) / CGFloat(templateImageInView.size.width)
+        let code = self.codes.first! // TODO: iterate all codes
+        if let image = self.templateImage, let imageRepresentation = image.representations.first, let label = self.label, let hiddenLabel = self.hiddenLabel, let font = label.font {
             let imageRect = CGRect(x: 0, y: 0, width: imageRepresentation.pixelsWide, height: imageRepresentation.pixelsHigh)
-            hiddenLabel.stringValue = code
-            hiddenLabel.font = NSFont.init(descriptor: font.fontDescriptor, size: (font.pointSize * scaling))
-            hiddenLabel.sizeToFit()
-            let proportionalWidth = hiddenLabel.frame.width / self.templateRatio
-            let proportionalHeight = hiddenLabel.frame.height / self.templateRatio
-            let x = self.ratioX * CGFloat(imageRepresentation.pixelsWide)
-            let y = self.ratioY * CGFloat(imageRepresentation.pixelsHigh) - proportionalHeight * 0.5
-            let alignedX = x - proportionalWidth * alignmentCoefficient / 2
-            let textRect = CGRect(x: alignedX, y: y, width: proportionalWidth, height: proportionalHeight)
+            prepareHiddenLabel(hiddenLabel: hiddenLabel, code: code, font: font, scaling: self.templateRatio)
+            let x = self.ratioX * CGFloat(imageRepresentation.pixelsWide) - hiddenLabel.frame.width * alignmentCoefficient / 2
+            let y = self.ratioY * CGFloat(imageRepresentation.pixelsHigh) - hiddenLabel.frame.height / 2
+            let textRect = CGRect(x: x, y: y, width: hiddenLabel.frame.width, height: hiddenLabel.frame.height)
             let textStyle = NSMutableParagraphStyle.default().mutableCopy() as! NSMutableParagraphStyle
             textStyle.alignment = .center
             let textFontAttributes = [
@@ -62,7 +54,7 @@ class PZImageGenerator: NSObject {
             code.draw(in: textRect, withAttributes: textFontAttributes)
             NSGraphicsContext.restoreGraphicsState()
             let desktopURL = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first!
-            let destinationURL = desktopURL.appendingPathComponent("my-image.jpg")
+            let destinationURL = desktopURL.appendingPathComponent("my-image.jpg") // TODO: use better filename and location
             do {
                 try rep.representation(using: .JPEG, properties: [:])!.write(to: destinationURL)
             }
@@ -70,6 +62,12 @@ class PZImageGenerator: NSObject {
                 print(error)
             }
         }
+    }
+
+    func prepareHiddenLabel(hiddenLabel: PZTemplateLabel, code: String, font: NSFont, scaling: CGFloat) {
+        hiddenLabel.stringValue = code
+        hiddenLabel.font = NSFont.init(descriptor: font.fontDescriptor, size: (font.pointSize / scaling))
+        hiddenLabel.sizeToFit()
     }
 
 }

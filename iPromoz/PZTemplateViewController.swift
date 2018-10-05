@@ -119,9 +119,8 @@ class PZTemplateViewController: NSViewController {
     }
 
     @IBAction func generate(sender: NSButton) {
-        Swift.print("generate() ibaction")
-        if let templateView = self.view as? PZTemplateView, let templateRatio: CGFloat = templateView.imageResizeRatio(), let label = exampleLabel, let hiddenLabel = self.hiddenLabel, let templateUrl = self.templateUrl {
-            let generator = PZImageGenerator(codes: self.texts, templateImageInView: templateView.image!, templateUrl: templateUrl, ratioX: ratioX, ratioY: ratioY, templateRatio: templateRatio, label: label, hiddenLabel: hiddenLabel, alignmentCoefficient: self.alignmentCoefficient)
+        if let templateView = self.view as? PZTemplateView, let templateRatio = templateView.imageResizeRatio(), let label = exampleLabel, let hiddenLabel = self.hiddenLabel, let templateUrl = self.templateUrl {
+            let generator = PZImageGenerator(codes: self.texts, templateUrl: templateUrl, ratioX: ratioX, ratioY: ratioY, templateRatio: templateRatio, label: label, hiddenLabel: hiddenLabel, alignmentCoefficient: self.alignmentCoefficient)
             generator.generate()
         }
     }
@@ -162,13 +161,13 @@ extension PZTemplateViewController: PZTemplateViewDelegate {
         self.templateUrl = templateUrl
         Swift.print(templateUrl)
         if let templateView = self.view as? PZTemplateView, let inputImage = NSImage(contentsOf: templateUrl) {
-            importTemplate(templateView: templateView, inputImage: inputImage)
+            importTemplateImage(templateView: templateView, inputImage: inputImage)
         }
         addTrackingArea(label: exampleLabel)
         checkGenerationButtonState()
     }
 
-    func importTemplate(templateView: PZTemplateView, inputImage: NSImage) {
+    func importTemplateImage(templateView: PZTemplateView, inputImage: NSImage) {
         let width = inputImage.representations.first!.pixelsWide
         let height = inputImage.representations.first!.pixelsHigh
         let destSize = NSMakeSize(CGFloat(width), CGFloat(height))
