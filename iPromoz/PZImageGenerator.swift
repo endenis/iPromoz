@@ -19,6 +19,7 @@ class PZImageGenerator: NSObject {
     var label: PZTemplateLabel? = nil
     var hiddenLabel: PZTemplateLabel? = nil
     var alignmentCoefficient: CGFloat = 1
+    var directoryURL: URL?
 
     init(codes: [String], templateUrl: URL, ratioX: CGFloat, ratioY: CGFloat, templateRatio: CGFloat, label: PZTemplateLabel, hiddenLabel: PZTemplateLabel, alignmentCoefficient: CGFloat) {
         self.codes = codes
@@ -32,6 +33,27 @@ class PZImageGenerator: NSObject {
     }
 
     func generate() {
+        if let desktopURL = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first {
+            self.directoryURL = desktopURL.appendingPathComponent("promoz \(currentBatchName())")
+            if let batchURL = directoryURL {
+                do {
+                    try FileManager.default.createDirectory(at: batchURL, withIntermediateDirectories: false, attributes: nil)
+                    generateAllCodes()
+                }
+                catch {
+                    print(error) // TODO: handle error better
+                }
+            }
+        }
+    }
+    
+    func currentBatchName() -> String {
+        let dateFormatter : DateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH-mm-ss"
+        return dateFormatter.string(from: Date())
+    }
+
+    func generateAllCodes() {
         for code in self.codes {
             generateSingleCode(code: code)
         }
@@ -69,17 +91,15 @@ class PZImageGenerator: NSObject {
     }
 
     func saveTemplateImage(bitmapImageRepresentation: NSBitmapImageRep, code: String) {
-        let desktopURL = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first!
+        if let batchURL = self.directoryURL {
+            let templateURL = batchURL.appendingPathComponent(filename(code: code)) // TODO: use better filename and location
+            writeJpegFile(bitmapImageRepresentation: bitmapImageRepresentation, to: templateURL)
+        }
+    }
+
+    func filename(code: String) -> String {
         let sanitizedCode = code.components(separatedBy: CharacterSet.init(charactersIn: "/\\:?%*|\"<>")).joined()
-        let directoryURL = desktopURL.appendingPathComponent("promoz_gen")
-        do {
-          try FileManager.default.createDirectory(at: directoryURL, withIntermediateDirectories: false, attributes: nil)
-          let templateURL = directoryURL.appendingPathComponent("\(sanitizedCode).jpg") // TODO: use better filename and location
-          writeJpegFile(bitmapImageRepresentation: bitmapImageRepresentation, to: templateURL)
-        }
-        catch {
-            print(error) // TODO: handle error better
-        }
+        return "\(sanitizedCode).jpg"
     }
 
     func writeJpegFile(bitmapImageRepresentation: NSBitmapImageRep, to: URL) {
