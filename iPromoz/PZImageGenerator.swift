@@ -32,7 +32,12 @@ class PZImageGenerator: NSObject {
     }
 
     func generate() {
-        let code = self.codes.first! // TODO: iterate all codes
+        for code in self.codes {
+            generateSingleCode(code: code)
+        }
+    }
+
+    func generateSingleCode(code: String) {
         if let image = self.templateImage, let imageRepresentation = image.representations.first, let label = self.label, let hiddenLabel = self.hiddenLabel, let font = label.font {
             let imageRect = CGRect(x: 0, y: 0, width: imageRepresentation.pixelsWide, height: imageRepresentation.pixelsHigh)
             prepareHiddenLabel(hiddenLabel: hiddenLabel, code: code, font: font, scaling: self.templateRatio)
@@ -46,21 +51,14 @@ class PZImageGenerator: NSObject {
                 NSForegroundColorAttributeName: label.textColor!,
                 NSParagraphStyleAttributeName: textStyle
             ]
-            let rep: NSBitmapImageRep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: Int(imageRepresentation.pixelsWide), pixelsHigh: Int(imageRepresentation.pixelsHigh), bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true, isPlanar: false, colorSpaceName: NSCalibratedRGBColorSpace, bytesPerRow: 0, bitsPerPixel: 0)!
+            let bitmapImageRepresentation: NSBitmapImageRep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: Int(imageRepresentation.pixelsWide), pixelsHigh: Int(imageRepresentation.pixelsHigh), bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true, isPlanar: false, colorSpaceName: NSCalibratedRGBColorSpace, bytesPerRow: 0, bitsPerPixel: 0)!
             NSAffineTransform.init().set()
             NSGraphicsContext.saveGraphicsState()
-            NSGraphicsContext.setCurrent(NSGraphicsContext(bitmapImageRep: rep))
+            NSGraphicsContext.setCurrent(NSGraphicsContext(bitmapImageRep: bitmapImageRepresentation))
             image.draw(in: imageRect)
             code.draw(in: textRect, withAttributes: textFontAttributes)
             NSGraphicsContext.restoreGraphicsState()
-            let desktopURL = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first!
-            let destinationURL = desktopURL.appendingPathComponent("my-image.jpg") // TODO: use better filename and location
-            do {
-                try rep.representation(using: .JPEG, properties: [:])!.write(to: destinationURL)
-            }
-            catch {
-                print(error)
-            }
+            saveTemplateImage(bitmapImageRepresentation: bitmapImageRepresentation, code: code)
         }
     }
 
@@ -68,6 +66,29 @@ class PZImageGenerator: NSObject {
         hiddenLabel.stringValue = code
         hiddenLabel.font = NSFont.init(descriptor: font.fontDescriptor, size: (font.pointSize / scaling))
         hiddenLabel.sizeToFit()
+    }
+
+    func saveTemplateImage(bitmapImageRepresentation: NSBitmapImageRep, code: String) {
+        let desktopURL = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).first!
+        let sanitizedCode = code.components(separatedBy: CharacterSet.init(charactersIn: "/\\:?%*|\"<>")).joined()
+        let directoryURL = desktopURL.appendingPathComponent("promoz_gen")
+        do {
+          try FileManager.default.createDirectory(at: directoryURL, withIntermediateDirectories: false, attributes: nil)
+          let templateURL = directoryURL.appendingPathComponent("\(sanitizedCode).jpg") // TODO: use better filename and location
+          writeJpegFile(bitmapImageRepresentation: bitmapImageRepresentation, to: templateURL)
+        }
+        catch {
+            print(error) // TODO: handle error better
+        }
+    }
+
+    func writeJpegFile(bitmapImageRepresentation: NSBitmapImageRep, to: URL) {
+        do {
+            try bitmapImageRepresentation.representation(using: .JPEG, properties: [:])!.write(to: to)
+        }
+        catch {
+            print(error) // TODO: handle errors better
+        }
     }
 
 }
