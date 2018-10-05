@@ -39,7 +39,7 @@ class PZImageGenerator: NSObject {
             let scaling = CGFloat(imageRepresentation.pixelsWide) / CGFloat(templateImageInView.size.width)
             let imageRect = CGRect(x: 0, y: 0, width: imageRepresentation.pixelsWide, height: imageRepresentation.pixelsHigh)
             hiddenLabel.stringValue = code
-            hiddenLabel.font = NSFont.init(descriptor: font.fontDescriptor, size: (font.pointSize * scaling / self.templateRatio))
+            hiddenLabel.font = NSFont.init(descriptor: font.fontDescriptor, size: (font.pointSize * scaling))
             hiddenLabel.sizeToFit()
             let proportionalWidth = hiddenLabel.frame.width / self.templateRatio
             let proportionalHeight = hiddenLabel.frame.height / self.templateRatio

@@ -24,20 +24,34 @@ class PZTemplateViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupColorPanel()
+        setupTemplateView()
+        setupFontManager()
+        setupTextTableView()
+    }
 
+    func setupColorPanel() {
         let colorPanel = NSColorPanel.shared()
         colorPanel.setTarget(self)
         colorPanel.setAction(#selector(colorDidChange(sender:)))
         colorPanel.isContinuous = true
+    }
 
+    func setupTemplateView() {
         if let templateView = self.view as? PZTemplateView {
             templateView.delegate = self
             templateView.postsFrameChangedNotifications = true
             let nc = NotificationCenter.default
-            nc.addObserver(forName:NSNotification.Name.NSViewFrameDidChange, object: templateView, queue: nil, using: catchNotification)
+            nc.addObserver(forName: NSNotification.Name.NSViewFrameDidChange, object: templateView, queue: nil, using: catchNotification)
         }
+    }
+
+    func setupFontManager() {
         let fontManager = NSFontManager.shared()
         fontManager.target = self
+    }
+
+    func setupTextTableView() {
         textTableView?.reloadData()
     }
 
@@ -47,11 +61,11 @@ class PZTemplateViewController: NSViewController {
 
     func updateSizes() -> Void {
         if let templateView = self.view as? PZTemplateView, let templateRectangle: NSRect = templateView.imageRectangle(), let templateRatio: CGFloat = templateView.imageResizeRatio() {
-            updateExampleLabel(templateRectangle: templateRectangle, templateRatio: templateRatio)
+            updateExampleLabelSize(templateRectangle: templateRectangle, templateRatio: templateRatio)
         }
     }
 
-    func updateExampleLabel(templateRectangle: NSRect, templateRatio: CGFloat) -> Void {
+    func updateExampleLabelSize(templateRectangle: NSRect, templateRatio: CGFloat) -> Void {
         if let theLabel = exampleLabel {
             let font: NSFont = theLabel.font!
             theLabel.font = NSFont.init(descriptor: font.fontDescriptor, size: (fontSize * templateRatio))
@@ -106,9 +120,9 @@ class PZTemplateViewController: NSViewController {
 
     @IBAction func generate(sender: NSButton) {
         Swift.print("generate() ibaction")
-        if let templateView = self.view as? PZTemplateView, let templateRectangle: NSRect = templateView.imageRectangle(), let templateRatio: CGFloat = templateView.imageResizeRatio(), let label = exampleLabel, let hiddenLabel = self.hiddenLabel, let templateUrl = self.templateUrl {
+        if let templateView = self.view as? PZTemplateView, let templateRatio: CGFloat = templateView.imageResizeRatio(), let label = exampleLabel, let hiddenLabel = self.hiddenLabel, let templateUrl = self.templateUrl {
             let generator = PZImageGenerator(codes: self.texts, templateImageInView: templateView.image!, templateUrl: templateUrl, ratioX: ratioX, ratioY: ratioY, templateRatio: templateRatio, label: label, hiddenLabel: hiddenLabel, alignmentCoefficient: self.alignmentCoefficient)
-          generator.generate()
+            generator.generate()
         }
     }
 
@@ -147,17 +161,33 @@ extension PZTemplateViewController: PZTemplateViewDelegate {
         fontSizeField?.integerValue = Int(fontSize.rounded())
         self.templateUrl = templateUrl
         Swift.print(templateUrl)
-        if let templateView = self.view as? PZTemplateView {
-            templateView.image = NSImage.init(contentsOf: templateUrl)
-            if let templateRectangle: NSRect = templateView.imageRectangle(), let templateRatio: CGFloat = templateView.imageResizeRatio() {
-                updateExampleLabel(templateRectangle: templateRectangle, templateRatio: templateRatio)
-            }
+        if let templateView = self.view as? PZTemplateView, let inputImage = NSImage(contentsOf: templateUrl) {
+            importTemplate(templateView: templateView, inputImage: inputImage)
         }
-        if let theLabel = exampleLabel {
-            let tackingArea = NSTrackingArea.init(rect: theLabel.bounds, options: [NSTrackingAreaOptions.mouseEnteredAndExited, NSTrackingAreaOptions.activeAlways], owner: theLabel, userInfo: nil)
-            theLabel.addTrackingArea(tackingArea)
-        }
+        addTrackingArea(label: exampleLabel)
         checkGenerationButtonState()
+    }
+
+    func importTemplate(templateView: PZTemplateView, inputImage: NSImage) {
+        let width = inputImage.representations.first!.pixelsWide
+        let height = inputImage.representations.first!.pixelsHigh
+        let destSize = NSMakeSize(CGFloat(width), CGFloat(height))
+        let newImage = NSImage(size: destSize)
+        newImage.lockFocus()
+        inputImage.draw(in: NSMakeRect(0, 0, destSize.width, destSize.height), from: NSMakeRect(0, 0, inputImage.size.width, inputImage.size.height), operation: .sourceAtop, fraction: CGFloat(1))
+        newImage.unlockFocus()
+        newImage.size = destSize
+        templateView.image = NSImage(data: newImage.tiffRepresentation!)!
+        if let templateRectangle: NSRect = templateView.imageRectangle(), let templateRatio: CGFloat = templateView.imageResizeRatio() {
+            updateExampleLabelSize(templateRectangle: templateRectangle, templateRatio: templateRatio)
+        }
+    }
+
+    func addTrackingArea(label: PZTemplateLabel?) {
+        if let labelToTrack = label {
+            let tackingArea = NSTrackingArea.init(rect: labelToTrack.bounds, options: [NSTrackingAreaOptions.mouseEnteredAndExited, NSTrackingAreaOptions.activeAlways], owner: labelToTrack, userInfo: nil)
+            labelToTrack.addTrackingArea(tackingArea)
+        }
     }
 
     func updateLabelPositionRatio(_ point: CGPoint) {
