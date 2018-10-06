@@ -125,8 +125,11 @@ class PZTemplateViewController: NSViewController {
         }
     }
 
-    func checkGenerationButtonState() {
-        generationButton?.isEnabled = shouldGenerationButtonBeEnabled()
+    func updateGenerationButtonState() {
+        if let button = generationButton {
+            button.isEnabled = shouldGenerationButtonBeEnabled()
+            updateGenerationButtonLabel(button: button)
+        }
     }
 
     func shouldGenerationButtonBeEnabled() -> Bool {
@@ -136,6 +139,15 @@ class PZTemplateViewController: NSViewController {
             }
         }
         return false
+    }
+
+    func updateGenerationButtonLabel(button: NSButton) {
+        if button.isEnabled {
+            button.title = "Generate (\(self.texts.count))"
+        }
+        else {
+            button.title = "Generate"
+        }
     }
 
 }
@@ -164,7 +176,7 @@ extension PZTemplateViewController: PZTemplateViewDelegate {
             importTemplateImage(templateView: templateView, inputImage: inputImage)
         }
         addTrackingArea(label: exampleLabel)
-        checkGenerationButtonState()
+        updateGenerationButtonState()
     }
 
     func importTemplateImage(templateView: PZTemplateView, inputImage: NSImage) {
@@ -221,7 +233,7 @@ extension PZTemplateViewController: NSTableViewDataSource {
         else {
             texts.append(code)
             Swift.print("appended \(code)")
-            checkGenerationButtonState()
+            updateGenerationButtonState()
         }
     }
 }
@@ -260,7 +272,7 @@ extension PZTemplateViewController : PZCodeScrollViewDelegate {
         let codesFromCsv = PZCsvReader.readCodesFromFileUrl(csvUrl)
         texts = codesFromCsv
         textTableView?.reloadData()
-        checkGenerationButtonState()
+        updateGenerationButtonState()
     }
 
 }
