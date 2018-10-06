@@ -23,18 +23,17 @@ class PZTemplateLabel: NSTextField {
     }
 
     override func mouseEntered(with event: NSEvent) {
-        self.drawsBackground = true
-        self.backgroundColor = self.mouseHoverBackgroundColor
     }
 
     override func mouseExited(with event: NSEvent) {
-        self.drawsBackground = false
     }
 
     override func mouseDown(with event: NSEvent) {
         let position = self.convert(event.locationInWindow, from: nil)
         self.clickedDownX = position.x
         self.clickedDownY = position.y
+        self.drawsBackground = true
+        self.backgroundColor = self.mouseHoverBackgroundColor
     }
     
     override func mouseDragged(with event: NSEvent) {
@@ -45,6 +44,7 @@ class PZTemplateLabel: NSTextField {
     }
     
     override func mouseUp(with event: NSEvent) {
+        self.drawsBackground = false
     }
 
     func removeTrackingAreas() {
