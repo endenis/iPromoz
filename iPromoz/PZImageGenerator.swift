@@ -39,6 +39,7 @@ class PZImageGenerator: NSObject {
                 do {
                     try FileManager.default.createDirectory(at: batchURL, withIntermediateDirectories: false, attributes: nil)
                     generateAllCodes()
+                    NSWorkspace.shared.openFile(batchURL.path, withApplication: "Finder")
                 }
                 catch {
                     print(error) // TODO: handle error better
