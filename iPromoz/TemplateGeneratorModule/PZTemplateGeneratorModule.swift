@@ -12,13 +12,13 @@ protocol PZTemplateGeneratorModelProtocol: class {
     var colorSelected: NSColor? { get set }
     var textSizeSelected: CGFloat { get set }
     var templateUrl: URL? { get set }
+    var fontName: String { get }
     var alignmentCoefficientSelected: CGFloat { get set }
     var screenBounds: CGRect { get }
     func getOriginalImageRatio() -> CGFloat?
 }
 
 protocol PZTemplateGeneratorViewProtocol: class {
-
 }
 
 protocol PZTemplateGeneratorPresenterProtocol {

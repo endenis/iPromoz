@@ -18,11 +18,13 @@ class PZImageGenerator: NSObject {
     let textColor: NSColor
     let hiddenLabel: PZTemplateLabel?
     let fontSize: CGFloat
+    let fontName: String
     let alignmentCoefficient: CGFloat
     var directoryURL: URL?
 
     init(codes: [String],
          fontSize: CGFloat,
+         fontName: String,
          textColor: NSColor,
          templateUrl: URL,
          ratioX: CGFloat,
@@ -31,6 +33,7 @@ class PZImageGenerator: NSObject {
          hiddenLabel: PZTemplateLabel,
          alignmentCoefficient: CGFloat) {
         self.fontSize = fontSize
+        self.fontName = fontName
         self.textColor = textColor
         self.codes = codes
         self.templateImage = NSImage(contentsOf: templateUrl)
@@ -71,9 +74,8 @@ class PZImageGenerator: NSObject {
 
     func generateSingleCode(code: String) {
         if let image = self.templateImage, let imageRepresentation = image.representations.first, let hiddenLabel = self.hiddenLabel {
-            let font = NSFont(name: "Helvetica Neue", size: 20)! //TODO: handle font
             let imageRect = CGRect(x: 0, y: 0, width: imageRepresentation.pixelsWide, height: imageRepresentation.pixelsHigh)
-            prepareHiddenLabel(hiddenLabel: hiddenLabel, code: code, font: font, scaling: self.templateRatio)
+            prepareHiddenLabel(hiddenLabel: hiddenLabel, code: code, scaling: self.templateRatio)
             let x = self.ratioX * CGFloat(imageRepresentation.pixelsWide) - hiddenLabel.frame.width * alignmentCoefficient / 2
             let y = self.ratioY * CGFloat(imageRepresentation.pixelsHigh) - hiddenLabel.frame.height / 2
             let textRect = CGRect(x: x, y: y, width: hiddenLabel.frame.width, height: hiddenLabel.frame.height)
@@ -95,9 +97,10 @@ class PZImageGenerator: NSObject {
         }
     }
 
-    func prepareHiddenLabel(hiddenLabel: PZTemplateLabel, code: String, font: NSFont, scaling: CGFloat) {
+    func prepareHiddenLabel(hiddenLabel: PZTemplateLabel, code: String, scaling: CGFloat) {
         hiddenLabel.stringValue = code
-        hiddenLabel.font = NSFont.init(descriptor: font.fontDescriptor, size: (fontSize / scaling))
+        let font = NSFont(name: fontName, size: 42)!
+        hiddenLabel.font = NSFont(descriptor: font.fontDescriptor, size: fontSize / scaling)
         hiddenLabel.sizeToFit()
     }
 

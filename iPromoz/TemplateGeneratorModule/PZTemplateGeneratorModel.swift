@@ -14,6 +14,8 @@ class PZTemplateGeneratorModel: PZTemplateGenerator.Model {
     let screenBounds: CGRect
     var textSizeSelected: CGFloat = 20
 
+    let fontName: String = "Helvetica Neue"
+
     init(screenBounds: CGRect) {
         self.screenBounds = screenBounds
     }

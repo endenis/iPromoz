@@ -43,6 +43,7 @@ class PZTemplateGeneratorPresenter: PZTemplateGenerator.Presenter {
               let templateUrl = model.templateUrl else { return }
         let generator = PZImageGenerator(codes: texts,
                                          fontSize: model.textSizeSelected,
+                                         fontName: model.fontName,
                                          textColor: textColor,
                                          templateUrl: templateUrl,
                                          ratioX: ratioX,
