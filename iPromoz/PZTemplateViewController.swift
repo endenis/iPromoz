@@ -27,10 +27,15 @@ class PZTemplateViewController: NSViewController, PZTemplateGenerator.View {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = PZTemplateGeneratorPresenter(model: PZTemplateGeneratorModel(screenBounds: view.bounds), view: self)
+        presenter.onViewDidLoad()
         setupColorPanel()
         setupTemplateView()
         setupFontManager()
         setupTextTableView()
+    }
+
+    func setExampleTextColor(color: NSColor) {
+        exampleLabel?.textColor = color
     }
 
     func setupColorPanel() {

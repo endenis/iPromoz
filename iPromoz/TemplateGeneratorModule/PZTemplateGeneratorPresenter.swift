@@ -15,6 +15,10 @@ class PZTemplateGeneratorPresenter: PZTemplateGenerator.Presenter {
         self.view = view
     }
 
+    func onViewDidLoad() {
+        view?.setExampleTextColor(color: model.colorSelected)
+    }
+
     func onDisplayedTextUpdated(fontSize: CGFloat) {
         model.textSizeSelected = fontSize
     }
@@ -38,13 +42,12 @@ class PZTemplateGeneratorPresenter: PZTemplateGenerator.Presenter {
 
     func onGenerateButtonTapped(hiddenLabel: PZTemplateLabel?, ratioX: CGFloat, ratioY: CGFloat, texts: [String]) {
         guard let hiddenLabel = hiddenLabel,
-              let textColor = model.colorSelected,
               let ratio = model.getOriginalImageRatio(),
               let templateUrl = model.templateUrl else { return }
         let generator = PZImageGenerator(codes: texts,
                                          fontSize: model.textSizeSelected,
                                          fontName: model.fontName,
-                                         textColor: textColor,
+                                         textColor: model.colorSelected,
                                          templateUrl: templateUrl,
                                          ratioX: ratioX,
                                          ratioY: ratioY,

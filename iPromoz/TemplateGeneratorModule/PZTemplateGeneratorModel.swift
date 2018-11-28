@@ -8,12 +8,11 @@ import Cocoa
 class PZTemplateGeneratorModel: PZTemplateGenerator.Model {
 
     var originalImageSize: NSSize?
-    var colorSelected: NSColor?
+    var colorSelected: NSColor = NSColor.black
     var templateUrl: URL?
     var alignmentCoefficientSelected: CGFloat = 1
-    let screenBounds: CGRect
     var textSizeSelected: CGFloat = 20
-
+    let screenBounds: CGRect
     let fontName: String = "Helvetica Neue"
 
     init(screenBounds: CGRect) {
