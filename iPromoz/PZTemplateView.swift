@@ -93,10 +93,9 @@ class PZTemplateView: NSImageView {
         if let imageSize = image?.size {
             if (NSWidth(bounds) > imageSize.width && NSHeight(bounds) > imageSize.height) {
                 return 1.0
-            }
-            else {
-                let xRatio = NSWidth(bounds)  / imageSize.width
-                let yRatio = NSHeight(bounds) / imageSize.height
+            } else {
+                let xRatio = bounds.width  / imageSize.width
+                let yRatio = bounds.height / imageSize.height
                 return [xRatio, yRatio].min()
             }
         }

@@ -10,23 +10,32 @@ import Cocoa
 
 class PZImageGenerator: NSObject {
 
-    var codes: [String] = []
-    var templateImage: NSImage? = nil
-    var templateUrl: URL? = nil
-    var ratioX: CGFloat = 0
-    var ratioY: CGFloat = 0
-    var templateRatio: CGFloat = 0.0
-    var label: PZTemplateLabel? = nil
-    var hiddenLabel: PZTemplateLabel? = nil
-    var alignmentCoefficient: CGFloat = 1
+    let codes: [String]
+    let templateImage: NSImage?
+    let ratioX: CGFloat
+    let ratioY: CGFloat
+    let templateRatio: CGFloat
+    let textColor: NSColor
+    let hiddenLabel: PZTemplateLabel?
+    let fontSize: CGFloat
+    let alignmentCoefficient: CGFloat
     var directoryURL: URL?
 
-    init(codes: [String], templateUrl: URL, ratioX: CGFloat, ratioY: CGFloat, templateRatio: CGFloat, label: PZTemplateLabel, hiddenLabel: PZTemplateLabel, alignmentCoefficient: CGFloat) {
+    init(codes: [String],
+         fontSize: CGFloat,
+         textColor: NSColor,
+         templateUrl: URL,
+         ratioX: CGFloat,
+         ratioY: CGFloat,
+         templateRatio: CGFloat,
+         hiddenLabel: PZTemplateLabel,
+         alignmentCoefficient: CGFloat) {
+        self.fontSize = fontSize
+        self.textColor = textColor
         self.codes = codes
-        self.templateImage = NSImage.init(contentsOf: templateUrl)
+        self.templateImage = NSImage(contentsOf: templateUrl)
         self.ratioX = ratioX
         self.ratioY = ratioY
-        self.label = label
         self.hiddenLabel = hiddenLabel
         self.templateRatio = templateRatio
         self.alignmentCoefficient = alignmentCoefficient
@@ -61,7 +70,8 @@ class PZImageGenerator: NSObject {
     }
 
     func generateSingleCode(code: String) {
-        if let image = self.templateImage, let imageRepresentation = image.representations.first, let label = self.label, let hiddenLabel = self.hiddenLabel, let font = label.font {
+        if let image = self.templateImage, let imageRepresentation = image.representations.first, let hiddenLabel = self.hiddenLabel {
+            let font = NSFont(name: "Helvetica Neue", size: 20)! //TODO: handle font
             let imageRect = CGRect(x: 0, y: 0, width: imageRepresentation.pixelsWide, height: imageRepresentation.pixelsHigh)
             prepareHiddenLabel(hiddenLabel: hiddenLabel, code: code, font: font, scaling: self.templateRatio)
             let x = self.ratioX * CGFloat(imageRepresentation.pixelsWide) - hiddenLabel.frame.width * alignmentCoefficient / 2
@@ -71,7 +81,7 @@ class PZImageGenerator: NSObject {
             textStyle.alignment = .center
             let textFontAttributes = [
                 NSAttributedStringKey.font: hiddenLabel.font!,
-                NSAttributedStringKey.foregroundColor: label.textColor!,
+                NSAttributedStringKey.foregroundColor: textColor,
                 NSAttributedStringKey.paragraphStyle: textStyle
             ]
             let bitmapImageRepresentation: NSBitmapImageRep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: Int(imageRepresentation.pixelsWide), pixelsHigh: Int(imageRepresentation.pixelsHigh), bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true, isPlanar: false, colorSpaceName: NSColorSpaceName.calibratedRGB, bytesPerRow: 0, bitsPerPixel: 0)!
@@ -87,7 +97,7 @@ class PZImageGenerator: NSObject {
 
     func prepareHiddenLabel(hiddenLabel: PZTemplateLabel, code: String, font: NSFont, scaling: CGFloat) {
         hiddenLabel.stringValue = code
-        hiddenLabel.font = NSFont.init(descriptor: font.fontDescriptor, size: (font.pointSize / scaling))
+        hiddenLabel.font = NSFont.init(descriptor: font.fontDescriptor, size: (fontSize / scaling))
         hiddenLabel.sizeToFit()
     }
 

@@ -5,7 +5,7 @@
 
 import Cocoa
 
-class PZTemplateViewController: NSViewController {
+class PZTemplateViewController: NSViewController, PZTemplateGenerator.View {
 
     @IBOutlet var instructionLabel: NSTextField?
     @IBOutlet var exampleLabel: PZTemplateLabel?
@@ -22,8 +22,11 @@ class PZTemplateViewController: NSViewController {
     var texts: [String] = []
     let defaultLabelText = "EXAMPLE"
 
+    var presenter: PZTemplateGenerator.Presenter!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter = PZTemplateGeneratorPresenter(model: PZTemplateGeneratorModel(screenBounds: view.bounds), view: self)
         setupColorPanel()
         setupTemplateView()
         setupFontManager()
@@ -74,10 +77,13 @@ class PZTemplateViewController: NSViewController {
             let y: CGFloat = templateRectangle.origin.y + self.ratioY * templateRectangle.height - (theLabel.frame.height / 2.0)
             theLabel.frame.origin.x = round(x)
             theLabel.frame.origin.y = round(y)
+
+            presenter.onDisplayedTextUpdated(fontSize: theLabel.font?.pointSize ?? 1)
         }
     }
 
     @IBAction func alignmentControlSelected(_ sender: NSSegmentedControl) {
+        presenter.onAlignmentControlSelected(sender: sender)
         let updatedAlignmentCoefficient = CGFloat(sender.selectedSegment)
         if let theLabel = exampleLabel {
             let x = theLabel.frame.origin.x + theLabel.frame.width * (updatedAlignmentCoefficient - alignmentCoefficient) * 0.5
@@ -89,12 +95,15 @@ class PZTemplateViewController: NSViewController {
 
     @objc func colorDidChange(sender: Any?) {
         if let colorPanel = sender as? NSColorPanel {
-            exampleLabel?.textColor = colorPanel.color
+            let colorSelected: NSColor = colorPanel.color
+            presenter.onColorSelected(color: colorSelected)
+            exampleLabel?.textColor = colorSelected
         }
     }
     
     @IBAction func updateLabelFontSize(sender: NSTextField) {
-        self.fontSize = CGFloat(sender.integerValue)
+        let selectedSize: CGFloat = CGFloat(sender.integerValue)
+        self.fontSize = selectedSize
         updateSizes()
     }
     
@@ -119,10 +128,7 @@ class PZTemplateViewController: NSViewController {
     }
 
     @IBAction func generate(sender: NSButton) {
-        if let templateView = self.view as? PZTemplateView, let templateRatio = templateView.imageResizeRatio(), let label = exampleLabel, let hiddenLabel = self.hiddenLabel, let templateUrl = self.templateUrl {
-            let generator = PZImageGenerator(codes: self.texts, templateUrl: templateUrl, ratioX: ratioX, ratioY: ratioY, templateRatio: templateRatio, label: label, hiddenLabel: hiddenLabel, alignmentCoefficient: self.alignmentCoefficient)
-            generator.generate()
-        }
+        presenter.onGenerateButtonTapped(hiddenLabel: hiddenLabel, ratioX: ratioX, ratioY: ratioY, texts: texts)
     }
 
     func updateGenerationButtonState() {
@@ -166,6 +172,7 @@ extension PZTemplateViewController: PZTemplateViewDelegate {
     }
     
     func workingWithATemplateState(_ templateUrl: URL) {
+        presenter.onImageAdded(templateUrl: templateUrl)
         instructionLabel?.isHidden = true
         exampleLabel?.isHidden = false
         fontSizeField?.isEnabled = true

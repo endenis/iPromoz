@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6A052D2EB8822C5E5FE9FA0E /* Pods_iPromoz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0099C6EA90FF9869C3929B5B /* Pods_iPromoz.framework */; };
+		BF8F43EC16B16D9CFC25167E /* PZTemplateGeneratorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8F4435B07B7C7243C72FC7 /* PZTemplateGeneratorPresenter.swift */; };
+		BF8F4A881B3228B11BA8478F /* PZTemplateGeneratorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8F4FFF2EE51B19F7EA6FCB /* PZTemplateGeneratorModel.swift */; };
+		BF8F4C65C214165E1BAF7FB5 /* PZTemplateGeneratorModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8F40F1F39AF1E9B0458CEA /* PZTemplateGeneratorModule.swift */; };
 		EF04B4621EA5600000F635C6 /* PZTemplateViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF04B4611EA5600000F635C6 /* PZTemplateViewDelegate.swift */; };
 		EF1A08B020560511008E630D /* PZCodeScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1A08AF20560511008E630D /* PZCodeScrollViewDelegate.swift */; };
 		EF3DEB311E55DB1C00F40D8D /* PZTemplateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3DEB301E55DB1C00F40D8D /* PZTemplateLabel.swift */; };
@@ -37,6 +40,9 @@
 		0099C6EA90FF9869C3929B5B /* Pods_iPromoz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iPromoz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		182D8173BCF27CA8C711C2CF /* Pods-iPromoz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPromoz.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPromoz/Pods-iPromoz.release.xcconfig"; sourceTree = "<group>"; };
 		19092C2F28F897263B138CCB /* Pods-iPromoz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPromoz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iPromoz/Pods-iPromoz.debug.xcconfig"; sourceTree = "<group>"; };
+		BF8F40F1F39AF1E9B0458CEA /* PZTemplateGeneratorModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZTemplateGeneratorModule.swift; sourceTree = "<group>"; };
+		BF8F4435B07B7C7243C72FC7 /* PZTemplateGeneratorPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZTemplateGeneratorPresenter.swift; sourceTree = "<group>"; };
+		BF8F4FFF2EE51B19F7EA6FCB /* PZTemplateGeneratorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZTemplateGeneratorModel.swift; sourceTree = "<group>"; };
 		EF04B4611EA5600000F635C6 /* PZTemplateViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZTemplateViewDelegate.swift; sourceTree = "<group>"; };
 		EF1A08AF20560511008E630D /* PZCodeScrollViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PZCodeScrollViewDelegate.swift; sourceTree = "<group>"; };
 		EF3DEB301E55DB1C00F40D8D /* PZTemplateLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZTemplateLabel.swift; sourceTree = "<group>"; };
@@ -83,6 +89,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BF8F42C335FBBDA177660992 /* TemplateGeneratorModule */ = {
+			isa = PBXGroup;
+			children = (
+				BF8F40F1F39AF1E9B0458CEA /* PZTemplateGeneratorModule.swift */,
+				BF8F4435B07B7C7243C72FC7 /* PZTemplateGeneratorPresenter.swift */,
+				BF8F4FFF2EE51B19F7EA6FCB /* PZTemplateGeneratorModel.swift */,
+			);
+			path = TemplateGeneratorModule;
+			sourceTree = "<group>";
+		};
 		EF89CDC41E4A853D00D87365 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +135,7 @@
 				EF57BBE91F368EC700AF0351 /* PZCsvReader.swift */,
 				EF1A08AF20560511008E630D /* PZCodeScrollViewDelegate.swift */,
 				EF792F8920CE7A8C0089DF9A /* PZImageGenerator.swift */,
+				BF8F42C335FBBDA177660992 /* TemplateGeneratorModule */,
 			);
 			path = iPromoz;
 			sourceTree = "<group>";
@@ -153,7 +170,6 @@
 				EF89CDCA1E4A853D00D87365 /* Frameworks */,
 				EF89CDCB1E4A853D00D87365 /* Resources */,
 				26F1DDC92B8CD032230781B4 /* [CP] Embed Pods Frameworks */,
-				D3B44C384633CBC34C15ED64 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -194,6 +210,7 @@
 				TargetAttributes = {
 					EF89CDCC1E4A853D00D87365 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 9JYSF3CQXK;
 						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 					};
@@ -250,7 +267,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-iPromoz/Pods-iPromoz-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-iPromoz/Pods-iPromoz-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CSwiftV/CSwiftV.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -259,7 +276,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iPromoz/Pods-iPromoz-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iPromoz/Pods-iPromoz-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BDC2B43FB18548F07FE8DBA1 /* [CP] Check Pods Manifest.lock */ = {
@@ -280,21 +297,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D3B44C384633CBC34C15ED64 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iPromoz/Pods-iPromoz-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -312,6 +314,9 @@
 				EF792F8A20CE7A8C0089DF9A /* PZImageGenerator.swift in Sources */,
 				EF3DEB311E55DB1C00F40D8D /* PZTemplateLabel.swift in Sources */,
 				EF04B4621EA5600000F635C6 /* PZTemplateViewDelegate.swift in Sources */,
+				BF8F4C65C214165E1BAF7FB5 /* PZTemplateGeneratorModule.swift in Sources */,
+				BF8F43EC16B16D9CFC25167E /* PZTemplateGeneratorPresenter.swift in Sources */,
+				BF8F4A881B3228B11BA8478F /* PZTemplateGeneratorModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +462,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9JYSF3CQXK;
 				INFOPLIST_FILE = iPromoz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.endenis.iPromoz;
@@ -472,6 +478,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9JYSF3CQXK;
 				INFOPLIST_FILE = iPromoz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.endenis.iPromoz;
